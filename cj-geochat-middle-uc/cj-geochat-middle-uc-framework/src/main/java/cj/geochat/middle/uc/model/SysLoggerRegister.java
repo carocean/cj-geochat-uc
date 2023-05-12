@@ -3,10 +3,10 @@ package cj.geochat.middle.uc.model;
 import lombok.Data;
 
 /**
- * Table: uc_logger_register
+ * Table: sys_logger_register
  */
 @Data
-public class UcLoggerRegister {
+public class SysLoggerRegister {
     /**
      * Column: id
      * Type: VARCHAR(50)
@@ -78,18 +78,18 @@ public class UcLoggerRegister {
     private String status;
 
     /**
+     * Column: device_id
+     * Type: VARCHAR(50)
+     * Remark: 事件发生设备
+     */
+    private String deviceId;
+
+    /**
      * Column: ip_address
      * Type: VARCHAR(20)
      * Remark: 注册ip地址
      */
     private String ipAddress;
-
-    /**
-     * Column: os_platform
-     * Type: VARCHAR(20)
-     * Remark: 注册的操作系统，如：window，chrome，geochat_app等
-     */
-    private String osPlatform;
 
     /**
      * Column: reg_username

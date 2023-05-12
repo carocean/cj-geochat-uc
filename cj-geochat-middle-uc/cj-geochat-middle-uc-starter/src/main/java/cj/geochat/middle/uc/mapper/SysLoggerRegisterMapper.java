@@ -1,9 +1,9 @@
 package cj.geochat.middle.uc.mapper;
 
-import static cj.geochat.middle.uc.mapper.UcLoggerRegisterDynamicSqlSupport.*;
+import static cj.geochat.middle.uc.mapper.SysLoggerRegisterDynamicSqlSupport.*;
 import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
 
-import cj.geochat.middle.uc.model.UcLoggerRegister;
+import cj.geochat.middle.uc.model.SysLoggerRegister;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -29,17 +29,17 @@ import org.mybatis.dynamic.sql.util.mybatis3.MyBatis3Utils;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteMapper, CommonInsertMapper<UcLoggerRegister>, CommonUpdateMapper {
+public interface SysLoggerRegisterMapper extends CommonCountMapper, CommonDeleteMapper, CommonInsertMapper<SysLoggerRegister>, CommonUpdateMapper {
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    BasicColumn[] selectList = BasicColumn.columnList(id, eventType, eventTitle, userId, accountId, accountCate, sourceType, sourceDesc, message, status, ipAddress, osPlatform, regUsername, regAccount, avatar, city, regLanguage, ctime, year, month, day);
+    BasicColumn[] selectList = BasicColumn.columnList(id, eventType, eventTitle, userId, accountId, accountCate, sourceType, sourceDesc, message, status, deviceId, ipAddress, regUsername, regAccount, avatar, city, regLanguage, ctime, year, month, day);
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
     @SelectProvider(type=SqlProviderAdapter.class, method="select")
-    @Results(id="UcLoggerRegisterResult", value = {
+    @Results(id="SysLoggerRegisterResult", value = {
         @Result(column="id", property="id", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="event_type", property="eventType", jdbcType=JdbcType.TINYINT),
         @Result(column="event_title", property="eventTitle", jdbcType=JdbcType.VARCHAR),
@@ -50,8 +50,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
         @Result(column="source_desc", property="sourceDesc", jdbcType=JdbcType.VARCHAR),
         @Result(column="message", property="message", jdbcType=JdbcType.VARCHAR),
         @Result(column="status", property="status", jdbcType=JdbcType.VARCHAR),
+        @Result(column="device_id", property="deviceId", jdbcType=JdbcType.VARCHAR),
         @Result(column="ip_address", property="ipAddress", jdbcType=JdbcType.VARCHAR),
-        @Result(column="os_platform", property="osPlatform", jdbcType=JdbcType.VARCHAR),
         @Result(column="reg_username", property="regUsername", jdbcType=JdbcType.VARCHAR),
         @Result(column="reg_account", property="regAccount", jdbcType=JdbcType.VARCHAR),
         @Result(column="avatar", property="avatar", jdbcType=JdbcType.VARCHAR),
@@ -62,27 +62,27 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
         @Result(column="month", property="month", jdbcType=JdbcType.INTEGER),
         @Result(column="day", property="day", jdbcType=JdbcType.INTEGER)
     })
-    List<UcLoggerRegister> selectMany(SelectStatementProvider selectStatement);
+    List<SysLoggerRegister> selectMany(SelectStatementProvider selectStatement);
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
     @SelectProvider(type=SqlProviderAdapter.class, method="select")
-    @ResultMap("UcLoggerRegisterResult")
-    Optional<UcLoggerRegister> selectOne(SelectStatementProvider selectStatement);
+    @ResultMap("SysLoggerRegisterResult")
+    Optional<SysLoggerRegister> selectOne(SelectStatementProvider selectStatement);
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
     default long count(CountDSLCompleter completer) {
-        return MyBatis3Utils.countFrom(this::count, ucLoggerRegister, completer);
+        return MyBatis3Utils.countFrom(this::count, sysLoggerRegister, completer);
     }
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
     default int delete(DeleteDSLCompleter completer) {
-        return MyBatis3Utils.deleteFrom(this::delete, ucLoggerRegister, completer);
+        return MyBatis3Utils.deleteFrom(this::delete, sysLoggerRegister, completer);
     }
 
     /**
@@ -97,8 +97,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default int insert(UcLoggerRegister row) {
-        return MyBatis3Utils.insert(this::insert, row, ucLoggerRegister, c ->
+    default int insert(SysLoggerRegister row) {
+        return MyBatis3Utils.insert(this::insert, row, sysLoggerRegister, c ->
             c.map(id).toProperty("id")
             .map(eventType).toProperty("eventType")
             .map(eventTitle).toProperty("eventTitle")
@@ -109,8 +109,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
             .map(sourceDesc).toProperty("sourceDesc")
             .map(message).toProperty("message")
             .map(status).toProperty("status")
+            .map(deviceId).toProperty("deviceId")
             .map(ipAddress).toProperty("ipAddress")
-            .map(osPlatform).toProperty("osPlatform")
             .map(regUsername).toProperty("regUsername")
             .map(regAccount).toProperty("regAccount")
             .map(avatar).toProperty("avatar")
@@ -126,8 +126,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default int insertMultiple(Collection<UcLoggerRegister> records) {
-        return MyBatis3Utils.insertMultiple(this::insertMultiple, records, ucLoggerRegister, c ->
+    default int insertMultiple(Collection<SysLoggerRegister> records) {
+        return MyBatis3Utils.insertMultiple(this::insertMultiple, records, sysLoggerRegister, c ->
             c.map(id).toProperty("id")
             .map(eventType).toProperty("eventType")
             .map(eventTitle).toProperty("eventTitle")
@@ -138,8 +138,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
             .map(sourceDesc).toProperty("sourceDesc")
             .map(message).toProperty("message")
             .map(status).toProperty("status")
+            .map(deviceId).toProperty("deviceId")
             .map(ipAddress).toProperty("ipAddress")
-            .map(osPlatform).toProperty("osPlatform")
             .map(regUsername).toProperty("regUsername")
             .map(regAccount).toProperty("regAccount")
             .map(avatar).toProperty("avatar")
@@ -155,8 +155,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default int insertSelective(UcLoggerRegister row) {
-        return MyBatis3Utils.insert(this::insert, row, ucLoggerRegister, c ->
+    default int insertSelective(SysLoggerRegister row) {
+        return MyBatis3Utils.insert(this::insert, row, sysLoggerRegister, c ->
             c.map(id).toPropertyWhenPresent("id", row::getId)
             .map(eventType).toPropertyWhenPresent("eventType", row::getEventType)
             .map(eventTitle).toPropertyWhenPresent("eventTitle", row::getEventTitle)
@@ -167,8 +167,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
             .map(sourceDesc).toPropertyWhenPresent("sourceDesc", row::getSourceDesc)
             .map(message).toPropertyWhenPresent("message", row::getMessage)
             .map(status).toPropertyWhenPresent("status", row::getStatus)
+            .map(deviceId).toPropertyWhenPresent("deviceId", row::getDeviceId)
             .map(ipAddress).toPropertyWhenPresent("ipAddress", row::getIpAddress)
-            .map(osPlatform).toPropertyWhenPresent("osPlatform", row::getOsPlatform)
             .map(regUsername).toPropertyWhenPresent("regUsername", row::getRegUsername)
             .map(regAccount).toPropertyWhenPresent("regAccount", row::getRegAccount)
             .map(avatar).toPropertyWhenPresent("avatar", row::getAvatar)
@@ -184,28 +184,28 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default Optional<UcLoggerRegister> selectOne(SelectDSLCompleter completer) {
-        return MyBatis3Utils.selectOne(this::selectOne, selectList, ucLoggerRegister, completer);
+    default Optional<SysLoggerRegister> selectOne(SelectDSLCompleter completer) {
+        return MyBatis3Utils.selectOne(this::selectOne, selectList, sysLoggerRegister, completer);
     }
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default List<UcLoggerRegister> select(SelectDSLCompleter completer) {
-        return MyBatis3Utils.selectList(this::selectMany, selectList, ucLoggerRegister, completer);
+    default List<SysLoggerRegister> select(SelectDSLCompleter completer) {
+        return MyBatis3Utils.selectList(this::selectMany, selectList, sysLoggerRegister, completer);
     }
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default List<UcLoggerRegister> selectDistinct(SelectDSLCompleter completer) {
-        return MyBatis3Utils.selectDistinct(this::selectMany, selectList, ucLoggerRegister, completer);
+    default List<SysLoggerRegister> selectDistinct(SelectDSLCompleter completer) {
+        return MyBatis3Utils.selectDistinct(this::selectMany, selectList, sysLoggerRegister, completer);
     }
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default Optional<UcLoggerRegister> selectByPrimaryKey(String id_) {
+    default Optional<SysLoggerRegister> selectByPrimaryKey(String id_) {
         return selectOne(c ->
             c.where(id, isEqualTo(id_))
         );
@@ -215,13 +215,13 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
      * @mbg.generated generated automatically, do not modify!
      */
     default int update(UpdateDSLCompleter completer) {
-        return MyBatis3Utils.update(this::update, ucLoggerRegister, completer);
+        return MyBatis3Utils.update(this::update, sysLoggerRegister, completer);
     }
 
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    static UpdateDSL<UpdateModel> updateAllColumns(UcLoggerRegister row, UpdateDSL<UpdateModel> dsl) {
+    static UpdateDSL<UpdateModel> updateAllColumns(SysLoggerRegister row, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(id).equalTo(row::getId)
                 .set(eventType).equalTo(row::getEventType)
                 .set(eventTitle).equalTo(row::getEventTitle)
@@ -232,8 +232,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
                 .set(sourceDesc).equalTo(row::getSourceDesc)
                 .set(message).equalTo(row::getMessage)
                 .set(status).equalTo(row::getStatus)
+                .set(deviceId).equalTo(row::getDeviceId)
                 .set(ipAddress).equalTo(row::getIpAddress)
-                .set(osPlatform).equalTo(row::getOsPlatform)
                 .set(regUsername).equalTo(row::getRegUsername)
                 .set(regAccount).equalTo(row::getRegAccount)
                 .set(avatar).equalTo(row::getAvatar)
@@ -248,7 +248,7 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    static UpdateDSL<UpdateModel> updateSelectiveColumns(UcLoggerRegister row, UpdateDSL<UpdateModel> dsl) {
+    static UpdateDSL<UpdateModel> updateSelectiveColumns(SysLoggerRegister row, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(id).equalToWhenPresent(row::getId)
                 .set(eventType).equalToWhenPresent(row::getEventType)
                 .set(eventTitle).equalToWhenPresent(row::getEventTitle)
@@ -259,8 +259,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
                 .set(sourceDesc).equalToWhenPresent(row::getSourceDesc)
                 .set(message).equalToWhenPresent(row::getMessage)
                 .set(status).equalToWhenPresent(row::getStatus)
+                .set(deviceId).equalToWhenPresent(row::getDeviceId)
                 .set(ipAddress).equalToWhenPresent(row::getIpAddress)
-                .set(osPlatform).equalToWhenPresent(row::getOsPlatform)
                 .set(regUsername).equalToWhenPresent(row::getRegUsername)
                 .set(regAccount).equalToWhenPresent(row::getRegAccount)
                 .set(avatar).equalToWhenPresent(row::getAvatar)
@@ -275,7 +275,7 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default int updateByPrimaryKey(UcLoggerRegister row) {
+    default int updateByPrimaryKey(SysLoggerRegister row) {
         return update(c ->
             c.set(eventType).equalTo(row::getEventType)
             .set(eventTitle).equalTo(row::getEventTitle)
@@ -286,8 +286,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
             .set(sourceDesc).equalTo(row::getSourceDesc)
             .set(message).equalTo(row::getMessage)
             .set(status).equalTo(row::getStatus)
+            .set(deviceId).equalTo(row::getDeviceId)
             .set(ipAddress).equalTo(row::getIpAddress)
-            .set(osPlatform).equalTo(row::getOsPlatform)
             .set(regUsername).equalTo(row::getRegUsername)
             .set(regAccount).equalTo(row::getRegAccount)
             .set(avatar).equalTo(row::getAvatar)
@@ -304,7 +304,7 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    default int updateByPrimaryKeySelective(UcLoggerRegister row) {
+    default int updateByPrimaryKeySelective(SysLoggerRegister row) {
         return update(c ->
             c.set(eventType).equalToWhenPresent(row::getEventType)
             .set(eventTitle).equalToWhenPresent(row::getEventTitle)
@@ -315,8 +315,8 @@ public interface UcLoggerRegisterMapper extends CommonCountMapper, CommonDeleteM
             .set(sourceDesc).equalToWhenPresent(row::getSourceDesc)
             .set(message).equalToWhenPresent(row::getMessage)
             .set(status).equalToWhenPresent(row::getStatus)
+            .set(deviceId).equalToWhenPresent(row::getDeviceId)
             .set(ipAddress).equalToWhenPresent(row::getIpAddress)
-            .set(osPlatform).equalToWhenPresent(row::getOsPlatform)
             .set(regUsername).equalToWhenPresent(row::getRegUsername)
             .set(regAccount).equalToWhenPresent(row::getRegAccount)
             .set(avatar).equalToWhenPresent(row::getAvatar)

@@ -19,6 +19,10 @@
     <dependencies>
         <dependency>
             <groupId>cj.geochat</groupId>
+            <artifactId>cj-geochat-ability-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cj.geochat</groupId>
             <artifactId>cj-geochat-ability-banner</artifactId>
         </dependency>
         <dependency>
@@ -45,6 +49,10 @@
         <dependency>
             <groupId>cj.geochat</groupId>
             <artifactId>cj-geochat-ability-mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.f4b6a3</groupId>
+            <artifactId>ulid-creator</artifactId>
         </dependency>
         <dependency>
             <groupId>cj.geochat</groupId>

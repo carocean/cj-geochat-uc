@@ -73,7 +73,6 @@
             <option name="generatedKeyWrapper">
               <GeneratedKeyWrapper>
                 <option name="column" value="" />
-                <option name="identity" value="false" />
               </GeneratedKeyWrapper>
             </option>
           </TableConfigurationWrapper>
@@ -108,6 +107,24 @@
           <list>
             <TableInfo>
               <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysLoggerEvent" />
+              <option name="tableComment" value="事件日志表&#10;记录操作，如修改密码、更新用户及账号状态等" />
+              <option name="tableName" value="sys_logger_event" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysLoggerLogin" />
+              <option name="tableComment" value="登录日志表。&#10;事件：登录、退出&#10;什么时间在什么设备上用哪个登录账号登录的？登录成功与否。" />
+              <option name="tableName" value="sys_logger_login" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysLoggerRegister" />
+              <option name="tableComment" value="用户注册日志表，包括添加的新登录账号。&#10;从什么设备注册的，注册方式是什么（如通过新建登录账号注册）。" />
+              <option name="tableName" value="sys_logger_register" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
               <option name="domainName" value="SysProps" />
               <option name="tableComment" value="系统属性表。&#10;用于配置系统的全局变量" />
               <option name="tableName" value="sys_props" />
@@ -120,15 +137,9 @@
             </TableInfo>
             <TableInfo>
               <option name="database" value="geochat.uc" />
-              <option name="domainName" value="UcLoggerLogin" />
-              <option name="tableComment" value="登录日志表。&#10;事件：登录、退出&#10;什么时间在什么设备上用哪个登录账号登录的？登录成功与否。" />
-              <option name="tableName" value="uc_logger_login" />
-            </TableInfo>
-            <TableInfo>
-              <option name="database" value="geochat.uc" />
-              <option name="domainName" value="UcLoggerRegister" />
-              <option name="tableComment" value="用户注册日志表，包括添加的新登录账号。&#10;从什么设备注册的，注册方式是什么（如通过新建登录账号注册）。" />
-              <option name="tableName" value="uc_logger_register" />
+              <option name="domainName" value="UcDevice" />
+              <option name="tableComment" value="设备表&#10;用户登录所在的设备信息" />
+              <option name="tableName" value="uc_device" />
             </TableInfo>
             <TableInfo>
               <option name="database" value="geochat.uc" />
@@ -150,6 +161,18 @@
             </TableInfo>
             <TableInfo>
               <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUserDevice" />
+              <option name="tableComment" value="用户设备表" />
+              <option name="tableName" value="uc_user_device" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUserRole" />
+              <option name="tableComment" value="用户角色分配表" />
+              <option name="tableName" value="uc_user_role" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
               <option name="domainName" value="UcWechat" />
               <option name="tableComment" value="微信信息表&#10;与登录账号表中以微信登录方式的open_code关联" />
               <option name="tableName" value="uc_wechat" />
@@ -167,6 +190,36 @@
     </option>
     <option name="tableInfoMap">
       <map>
+        <entry key="geochat.uc#sys_logger_event">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysLoggerEvent" />
+              <option name="tableComment" value="事件日志表&#10;记录操作，如修改密码、更新用户及账号状态等" />
+              <option name="tableName" value="sys_logger_event" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#sys_logger_login">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysLoggerLogin" />
+              <option name="tableComment" value="登录日志表。&#10;事件：登录、退出&#10;什么时间在什么设备上用哪个登录账号登录的？登录成功与否。" />
+              <option name="tableName" value="sys_logger_login" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#sys_logger_register">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysLoggerRegister" />
+              <option name="tableComment" value="用户注册日志表，包括添加的新登录账号。&#10;从什么设备注册的，注册方式是什么（如通过新建登录账号注册）。" />
+              <option name="tableName" value="sys_logger_register" />
+            </TableInfo>
+          </value>
+        </entry>
         <entry key="geochat.uc#sys_props">
           <value>
             <TableInfo>
@@ -184,6 +237,16 @@
               <option name="domainName" value="UcAlipay" />
               <option name="tableComment" value="支付宝信息表&#10;与登录账号表中以支付宝登录方式的open_code关联" />
               <option name="tableName" value="uc_alipay" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_device">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcDevice" />
+              <option name="tableComment" value="设备表&#10;用户登录所在的设备信息" />
+              <option name="tableName" value="uc_device" />
             </TableInfo>
           </value>
         </entry>
@@ -234,6 +297,26 @@
               <option name="domainName" value="UcUser" />
               <option name="tableComment" value="用户信息表" />
               <option name="tableName" value="uc_user" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_user_device">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUserDevice" />
+              <option name="tableComment" value="用户设备表" />
+              <option name="tableName" value="uc_user_device" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_user_role">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUserRole" />
+              <option name="tableComment" value="用户角色分配表" />
+              <option name="tableName" value="uc_user_role" />
             </TableInfo>
           </value>
         </entry>
