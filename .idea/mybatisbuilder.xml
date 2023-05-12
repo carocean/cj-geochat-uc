@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MybatisBuilder.project.settings">
+    <option name="connectionInfoList">
+      <list>
+        <ConnectionInfo>
+          <option name="database" value="geochat.uc" />
+          <option name="description" value="geochat-ecs.local" />
+          <option name="driverClass" value="" />
+          <option name="driverLibrary" value="" />
+          <option name="driverType" value="MySQL" />
+          <option name="host" value="geochat-ecs.local" />
+          <option name="id" value="73564d8d58144144acb13505be4aff59" />
+          <option name="name" value="geochat-ecs.local" />
+          <option name="port" value="6446" />
+          <option name="url" value="" />
+          <option name="userName" value="joes" />
+        </ConnectionInfo>
+      </list>
+    </option>
+    <option name="defaultParameters">
+      <DefaultParameters>
+        <option name="renameConfig">
+          <Config>
+            <option name="mapperTypePattern" value="" />
+            <option name="exampleTypePattern" value="" />
+            <option name="sqlFileNamePattern" value="" />
+          </Config>
+        </option>
+        <option name="selectWithLockConfig">
+          <SelectWithLockConfig>
+            <option name="byPrimaryKeyWithLockOverride" value="" />
+            <option name="byExampleWithLockOverride" value="" />
+          </SelectWithLockConfig>
+        </option>
+      </DefaultParameters>
+    </option>
+    <option name="historyMap">
+      <map>
+        <entry key="JAVA_CLIENT_PACKAGE">
+          <value>
+            <list>
+              <option value="cj.geochat.middle.uc.mapper" />
+            </list>
+          </value>
+        </entry>
+        <entry key="JAVA_MODEL_PACKAGE">
+          <value>
+            <list>
+              <option value="cj.geochat.middle.uc.model" />
+            </list>
+          </value>
+        </entry>
+        <entry key="SQL_MAP_PACKAGE">
+          <value>
+            <list>
+              <option value="sqlmap" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastGeneratorParamWrapper">
+      <GeneratorParamWrapper>
+        <option name="defaultTableConfigWrapper">
+          <TableConfigurationWrapper>
+            <option name="domainObjectRenamingRule">
+              <DomainObjectRenamingRule>
+                <option name="replaceString" value="" />
+                <option name="searchString" value="" />
+              </DomainObjectRenamingRule>
+            </option>
+            <option name="generatedKeyWrapper">
+              <GeneratedKeyWrapper>
+                <option name="column" value="" />
+                <option name="identity" value="false" />
+              </GeneratedKeyWrapper>
+            </option>
+          </TableConfigurationWrapper>
+        </option>
+        <option name="javaClientConfig">
+          <JavaClientGeneratorConfiguration>
+            <option name="configurationType" value="XMLMAPPER" />
+            <option name="targetPackage" value="cj.geochat.middle.uc.mapper" />
+            <option name="targetProject" value="$PROJECT_DIR$/cj-geochat-middle-uc/cj-geochat-middle-uc-starter/src/main/java" />
+          </JavaClientGeneratorConfiguration>
+        </option>
+        <option name="javaModelConfig">
+          <JavaModelGeneratorConfiguration>
+            <option name="targetPackage" value="cj.geochat.middle.uc.model" />
+            <option name="targetProject" value="$PROJECT_DIR$/cj-geochat-middle-uc/cj-geochat-middle-uc-framework/src/main/java" />
+          </JavaModelGeneratorConfiguration>
+        </option>
+        <option name="selectedPlugins">
+          <map>
+            <entry key="com.chuntung.plugin.mybatis.builder.generator.plugins.LombokPlugin" />
+            <entry key="com.chuntung.plugin.mybatis.builder.generator.plugins.MapperAnnotationPlugin">
+              <value>
+                <PluginConfigWrapper>
+                  <option name="json" value="{&quot;customAnnotationType&quot;:&quot;org.springframework.stereotype.Repository&quot;}" />
+                  <option name="type" value="com.chuntung.plugin.mybatis.builder.generator.plugins.MapperAnnotationPlugin$Config" />
+                </PluginConfigWrapper>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="selectedTables">
+          <list>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysProps" />
+              <option name="tableComment" value="系统属性表。&#10;用于配置系统的全局变量" />
+              <option name="tableName" value="sys_props" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcAlipay" />
+              <option name="tableComment" value="支付宝信息表&#10;与登录账号表中以支付宝登录方式的open_code关联" />
+              <option name="tableName" value="uc_alipay" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcLoggerLogin" />
+              <option name="tableComment" value="登录日志表。&#10;事件：登录、退出&#10;什么时间在什么设备上用哪个登录账号登录的？登录成功与否。" />
+              <option name="tableName" value="uc_logger_login" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcLoggerRegister" />
+              <option name="tableComment" value="用户注册日志表，包括添加的新登录账号。&#10;从什么设备注册的，注册方式是什么（如通过新建登录账号注册）。" />
+              <option name="tableName" value="uc_logger_register" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcLoginAccount" />
+              <option name="tableComment" value="登录账号表。此表为支持多种登录方式，如手机号、邮件、微信、支付宝等。&#10;不包括密码信息，因为用户不论多少登录方式，身份只有一个。" />
+              <option name="tableName" value="uc_login_account" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcRole" />
+              <option name="tableComment" value="角色表&#10;可参考mac的角色设置。uc只定义角色，角色能干什么由子系统解释" />
+              <option name="tableName" value="uc_role" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUser" />
+              <option name="tableComment" value="用户信息表" />
+              <option name="tableName" value="uc_user" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcWechat" />
+              <option name="tableComment" value="微信信息表&#10;与登录账号表中以微信登录方式的open_code关联" />
+              <option name="tableName" value="uc_wechat" />
+            </TableInfo>
+          </list>
+        </option>
+        <option name="sqlMapConfig">
+          <SqlMapGeneratorConfiguration>
+            <option name="targetPackage" value="sqlmap" />
+            <option name="targetProject" value="$PROJECT_DIR$" />
+          </SqlMapGeneratorConfiguration>
+        </option>
+        <option name="targetRuntime" value="MyBatis3DynamicSql" />
+      </GeneratorParamWrapper>
+    </option>
+    <option name="tableInfoMap">
+      <map>
+        <entry key="geochat.uc#sys_props">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysProps" />
+              <option name="tableComment" value="系统属性表。&#10;用于配置系统的全局变量" />
+              <option name="tableName" value="sys_props" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_alipay">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcAlipay" />
+              <option name="tableComment" value="支付宝信息表&#10;与登录账号表中以支付宝登录方式的open_code关联" />
+              <option name="tableName" value="uc_alipay" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_logger_login">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcLoggerLogin" />
+              <option name="tableComment" value="登录日志表。&#10;事件：登录、退出&#10;什么时间在什么设备上用哪个登录账号登录的？登录成功与否。" />
+              <option name="tableName" value="uc_logger_login" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_logger_register">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcLoggerRegister" />
+              <option name="tableComment" value="用户注册日志表，包括添加的新登录账号。&#10;从什么设备注册的，注册方式是什么（如通过新建登录账号注册）。" />
+              <option name="tableName" value="uc_logger_register" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_login_account">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcLoginAccount" />
+              <option name="tableComment" value="登录账号表。此表为支持多种登录方式，如手机号、邮件、微信、支付宝等。&#10;不包括密码信息，因为用户不论多少登录方式，身份只有一个。" />
+              <option name="tableName" value="uc_login_account" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_role">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcRole" />
+              <option name="tableComment" value="角色表&#10;可参考mac的角色设置。uc只定义角色，角色能干什么由子系统解释" />
+              <option name="tableName" value="uc_role" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_user">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUser" />
+              <option name="tableComment" value="用户信息表" />
+              <option name="tableName" value="uc_user" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#uc_wechat">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcWechat" />
+              <option name="tableComment" value="微信信息表&#10;与登录账号表中以微信登录方式的open_code关联" />
+              <option name="tableName" value="uc_wechat" />
+            </TableInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

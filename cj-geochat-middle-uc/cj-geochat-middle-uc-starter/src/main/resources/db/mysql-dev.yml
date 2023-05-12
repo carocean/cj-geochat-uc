@@ -1,0 +1,12 @@
+datasource:
+  write:
+    url: ${docker.datasource.write.url:jdbc:mysql://geochat-ecs.local:6446/geochat.uc?allowMultiQueries=true&allowPublicKeyRetrieval=true}
+    username: ${cj.geochat.datasource.write.username:joes}
+    password: ${cj.geochat.datasource.write.password:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  read:
+    url: ${cj.geochat.datasource.read.url:jdbc:mysql://geochat-ecs.local:6447/geochat.uc?allowMultiQueries=true&allowPublicKeyRetrieval=true}
+    username: ${cj.geochat.datasource.read.username:joes}
+    password: ${cj.geochat.datasource.read.password:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
