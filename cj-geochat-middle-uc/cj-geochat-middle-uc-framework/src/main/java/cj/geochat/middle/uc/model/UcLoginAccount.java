@@ -30,10 +30,10 @@ public class UcLoginAccount {
 
     /**
      * Column: category
-     * Type: BIT
-     * Remark: 账号类别：0=手机号；1=邮箱；2=微信；3=支付宝
+     * Type: VARCHAR(10)
+     * Remark: 账号类别
      */
-    private Boolean category;
+    private String category;
 
     /**
      * Column: ctime
@@ -44,9 +44,9 @@ public class UcLoginAccount {
 
     /**
      * Column: status
-     * Type: BIT
+     * Type: VARCHAR(10)
      * Default value: 0
      * Remark: 账户状态:0=正常,1=个人停用
      */
-    private Boolean status;
+    private String status;
 }

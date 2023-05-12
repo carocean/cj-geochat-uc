@@ -1,10 +1,10 @@
-package cj.geochat.middle.uc.service;
+package cj.geochat.middle.uc.restful;
 
 import cj.geochat.middle.uc.model.UcWechat;
 
 import java.util.List;
 
-public interface IWechatService {
+public interface IWechatRestfull {
 
     String createWechat(String userId,String openid,String nickName,int sex,String language,String city,String province,String country,String avatar);
 

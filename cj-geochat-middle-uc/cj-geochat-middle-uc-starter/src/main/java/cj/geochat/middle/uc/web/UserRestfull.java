@@ -4,6 +4,7 @@ import cj.geochat.ability.api.annotation.ApiResult;
 import cj.geochat.middle.uc.UserStatus;
 import cj.geochat.middle.uc.model.UcUser;
 import cj.geochat.middle.uc.restful.IUserRestfull;
+import cj.geochat.middle.uc.surface.IRegisterUserSurface;
 import cj.geochat.middle.uc.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -11,8 +12,12 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
@@ -21,14 +26,16 @@ import java.util.List;
 public class UserRestfull implements IUserRestfull {
     @Autowired
     IUserService userService;
+    @Autowired
+    IRegisterUserSurface registerUserService;
 
-    @PostMapping("/addUser")
+    @GetMapping("/createUser")
     @ApiResult
     @ApiOperation("新建用户")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
-    public void addUser(@RequestBody UcUser user) {
-        userService.addUser(user);
+    public String createUser(String avatar, String nickName, String phone, String password, String countryCode, boolean isAgreeUPA) throws UnsupportedEncodingException {
+        return userService.createUser(avatar, nickName, phone, password, countryCode, isAgreeUPA);
     }
 
     @GetMapping("/removeUser")
@@ -126,7 +133,7 @@ public class UserRestfull implements IUserRestfull {
     @ApiOperation("更新用户主账号")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
-    public void updateMajorAccount(String userId, @ApiParam(name = "主登录账号") String accountId) {
+    public void updateMajorAccount(String userId, @ApiParam(value = "主登录账号") String accountId) {
         userService.updateMajorAccount(userId, accountId);
     }
 }

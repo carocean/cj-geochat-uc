@@ -6,7 +6,7 @@ import cj.geochat.middle.uc.model.UcUser;
 import java.util.List;
 
 public interface IUserService {
-    void addUser(UcUser user);
+    String createUser(String avatar, String nickName, String phone, String password, String countryCode, boolean isAgreeUPA);
 
     void removeUser(String userId);
 

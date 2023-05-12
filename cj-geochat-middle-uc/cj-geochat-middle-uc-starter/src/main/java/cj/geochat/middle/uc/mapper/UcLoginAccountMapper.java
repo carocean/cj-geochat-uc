@@ -43,9 +43,9 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
         @Result(column="id", property="id", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.VARCHAR),
         @Result(column="open_code", property="openCode", jdbcType=JdbcType.VARCHAR),
-        @Result(column="category", property="category", jdbcType=JdbcType.BIT),
+        @Result(column="category", property="category", jdbcType=JdbcType.VARCHAR),
         @Result(column="ctime", property="ctime", jdbcType=JdbcType.VARCHAR),
-        @Result(column="status", property="status", jdbcType=JdbcType.BIT)
+        @Result(column="status", property="status", jdbcType=JdbcType.VARCHAR)
     })
     List<UcLoginAccount> selectMany(SelectStatementProvider selectStatement);
 

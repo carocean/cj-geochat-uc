@@ -64,13 +64,6 @@ public class UcUser {
     private String password;
 
     /**
-     * Column: salt
-     * Type: VARCHAR(64)
-     * Remark: 密码盐。一个任意串，用于和密码一起md5
-     */
-    private String salt;
-
-    /**
      * Column: major_account
      * Type: VARCHAR(50)
      * Remark: 主账号，是登录账号中的一个作为主帐号
@@ -79,11 +72,11 @@ public class UcUser {
 
     /**
      * Column: status
-     * Type: TINYINT(3)
+     * Type: VARCHAR(10)
      * Default value: 0
      * Remark: 0=是正常；1、个人停用；2=平台强制冻结
      */
-    private Byte status;
+    private String status;
 
     /**
      * Column: last_login_time
@@ -105,4 +98,18 @@ public class UcUser {
      * Remark: 创建时间
      */
     private String ctime;
+
+    /**
+     * Column: country_code
+     * Type: VARCHAR(10)
+     * Remark: 国家代码
+     */
+    private String countryCode;
+
+    /**
+     * Column: agree_upa
+     * Type: BIT
+     * Remark: 是否同意用户隐私协议
+     */
+    private Boolean agreeUpa;
 }

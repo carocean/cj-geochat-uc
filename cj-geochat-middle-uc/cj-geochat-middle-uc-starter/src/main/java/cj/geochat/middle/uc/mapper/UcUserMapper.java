@@ -33,7 +33,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    BasicColumn[] selectList = BasicColumn.columnList(id, nickName, realName, userIntro, avatar, email, phone, password, salt, majorAccount, status, lastLoginTime, updatePwdTime, ctime);
+    BasicColumn[] selectList = BasicColumn.columnList(id, nickName, realName, userIntro, avatar, email, phone, password, majorAccount, status, lastLoginTime, updatePwdTime, ctime, countryCode, agreeUpa);
 
     /**
      * @mbg.generated generated automatically, do not modify!
@@ -48,12 +48,13 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
         @Result(column="email", property="email", jdbcType=JdbcType.VARCHAR),
         @Result(column="phone", property="phone", jdbcType=JdbcType.VARCHAR),
         @Result(column="password", property="password", jdbcType=JdbcType.VARCHAR),
-        @Result(column="salt", property="salt", jdbcType=JdbcType.VARCHAR),
         @Result(column="major_account", property="majorAccount", jdbcType=JdbcType.VARCHAR),
-        @Result(column="status", property="status", jdbcType=JdbcType.TINYINT),
+        @Result(column="status", property="status", jdbcType=JdbcType.VARCHAR),
         @Result(column="last_login_time", property="lastLoginTime", jdbcType=JdbcType.VARCHAR),
         @Result(column="update_pwd_time", property="updatePwdTime", jdbcType=JdbcType.VARCHAR),
-        @Result(column="ctime", property="ctime", jdbcType=JdbcType.VARCHAR)
+        @Result(column="ctime", property="ctime", jdbcType=JdbcType.VARCHAR),
+        @Result(column="country_code", property="countryCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="agree_upa", property="agreeUpa", jdbcType=JdbcType.BIT)
     })
     List<UcUser> selectMany(SelectStatementProvider selectStatement);
 
@@ -100,12 +101,13 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(email).toProperty("email")
             .map(phone).toProperty("phone")
             .map(password).toProperty("password")
-            .map(salt).toProperty("salt")
             .map(majorAccount).toProperty("majorAccount")
             .map(status).toProperty("status")
             .map(lastLoginTime).toProperty("lastLoginTime")
             .map(updatePwdTime).toProperty("updatePwdTime")
             .map(ctime).toProperty("ctime")
+            .map(countryCode).toProperty("countryCode")
+            .map(agreeUpa).toProperty("agreeUpa")
         );
     }
 
@@ -122,12 +124,13 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(email).toProperty("email")
             .map(phone).toProperty("phone")
             .map(password).toProperty("password")
-            .map(salt).toProperty("salt")
             .map(majorAccount).toProperty("majorAccount")
             .map(status).toProperty("status")
             .map(lastLoginTime).toProperty("lastLoginTime")
             .map(updatePwdTime).toProperty("updatePwdTime")
             .map(ctime).toProperty("ctime")
+            .map(countryCode).toProperty("countryCode")
+            .map(agreeUpa).toProperty("agreeUpa")
         );
     }
 
@@ -144,12 +147,13 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(email).toPropertyWhenPresent("email", row::getEmail)
             .map(phone).toPropertyWhenPresent("phone", row::getPhone)
             .map(password).toPropertyWhenPresent("password", row::getPassword)
-            .map(salt).toPropertyWhenPresent("salt", row::getSalt)
             .map(majorAccount).toPropertyWhenPresent("majorAccount", row::getMajorAccount)
             .map(status).toPropertyWhenPresent("status", row::getStatus)
             .map(lastLoginTime).toPropertyWhenPresent("lastLoginTime", row::getLastLoginTime)
             .map(updatePwdTime).toPropertyWhenPresent("updatePwdTime", row::getUpdatePwdTime)
             .map(ctime).toPropertyWhenPresent("ctime", row::getCtime)
+            .map(countryCode).toPropertyWhenPresent("countryCode", row::getCountryCode)
+            .map(agreeUpa).toPropertyWhenPresent("agreeUpa", row::getAgreeUpa)
         );
     }
 
@@ -202,12 +206,13 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
                 .set(email).equalTo(row::getEmail)
                 .set(phone).equalTo(row::getPhone)
                 .set(password).equalTo(row::getPassword)
-                .set(salt).equalTo(row::getSalt)
                 .set(majorAccount).equalTo(row::getMajorAccount)
                 .set(status).equalTo(row::getStatus)
                 .set(lastLoginTime).equalTo(row::getLastLoginTime)
                 .set(updatePwdTime).equalTo(row::getUpdatePwdTime)
-                .set(ctime).equalTo(row::getCtime);
+                .set(ctime).equalTo(row::getCtime)
+                .set(countryCode).equalTo(row::getCountryCode)
+                .set(agreeUpa).equalTo(row::getAgreeUpa);
     }
 
     /**
@@ -222,12 +227,13 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
                 .set(email).equalToWhenPresent(row::getEmail)
                 .set(phone).equalToWhenPresent(row::getPhone)
                 .set(password).equalToWhenPresent(row::getPassword)
-                .set(salt).equalToWhenPresent(row::getSalt)
                 .set(majorAccount).equalToWhenPresent(row::getMajorAccount)
                 .set(status).equalToWhenPresent(row::getStatus)
                 .set(lastLoginTime).equalToWhenPresent(row::getLastLoginTime)
                 .set(updatePwdTime).equalToWhenPresent(row::getUpdatePwdTime)
-                .set(ctime).equalToWhenPresent(row::getCtime);
+                .set(ctime).equalToWhenPresent(row::getCtime)
+                .set(countryCode).equalToWhenPresent(row::getCountryCode)
+                .set(agreeUpa).equalToWhenPresent(row::getAgreeUpa);
     }
 
     /**
@@ -242,12 +248,13 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .set(email).equalTo(row::getEmail)
             .set(phone).equalTo(row::getPhone)
             .set(password).equalTo(row::getPassword)
-            .set(salt).equalTo(row::getSalt)
             .set(majorAccount).equalTo(row::getMajorAccount)
             .set(status).equalTo(row::getStatus)
             .set(lastLoginTime).equalTo(row::getLastLoginTime)
             .set(updatePwdTime).equalTo(row::getUpdatePwdTime)
             .set(ctime).equalTo(row::getCtime)
+            .set(countryCode).equalTo(row::getCountryCode)
+            .set(agreeUpa).equalTo(row::getAgreeUpa)
             .where(id, isEqualTo(row::getId))
         );
     }
@@ -264,12 +271,13 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .set(email).equalToWhenPresent(row::getEmail)
             .set(phone).equalToWhenPresent(row::getPhone)
             .set(password).equalToWhenPresent(row::getPassword)
-            .set(salt).equalToWhenPresent(row::getSalt)
             .set(majorAccount).equalToWhenPresent(row::getMajorAccount)
             .set(status).equalToWhenPresent(row::getStatus)
             .set(lastLoginTime).equalToWhenPresent(row::getLastLoginTime)
             .set(updatePwdTime).equalToWhenPresent(row::getUpdatePwdTime)
             .set(ctime).equalToWhenPresent(row::getCtime)
+            .set(countryCode).equalToWhenPresent(row::getCountryCode)
+            .set(agreeUpa).equalToWhenPresent(row::getAgreeUpa)
             .where(id, isEqualTo(row::getId))
         );
     }

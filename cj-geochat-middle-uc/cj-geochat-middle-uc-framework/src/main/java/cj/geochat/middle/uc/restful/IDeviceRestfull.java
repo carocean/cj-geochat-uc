@@ -1,11 +1,11 @@
-package cj.geochat.middle.uc.service;
+package cj.geochat.middle.uc.restful;
 
 import cj.geochat.middle.uc.model.UcDevice;
 
 import java.util.List;
 
-public interface IDeviceService {
-    String createDevice(String identifier, String osName, String deviceName, String deviceVersion);
+public interface IDeviceRestfull {
+    void createDevice(String identifier, String osName, String deviceName, String deviceVersion);
 
     void removeDevice(String deviceId);
 
@@ -15,7 +15,7 @@ public interface IDeviceService {
 
     List<UcDevice> listDevice(int limit, long offset);
 
-    List<UcDevice> listDevice(String os_name, int limit, long offset);
+    List<UcDevice> listDeviceByOSName(String os_name, int limit, long offset);
 
     List<UcDevice> listDeviceOfUser(String userId);
 

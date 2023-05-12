@@ -13,11 +13,11 @@ public final class UcLoginAccountDynamicSqlSupport {
 
     public static final SqlColumn<String> openCode = ucLoginAccount.openCode;
 
-    public static final SqlColumn<Boolean> category = ucLoginAccount.category;
+    public static final SqlColumn<String> category = ucLoginAccount.category;
 
     public static final SqlColumn<String> ctime = ucLoginAccount.ctime;
 
-    public static final SqlColumn<Boolean> status = ucLoginAccount.status;
+    public static final SqlColumn<String> status = ucLoginAccount.status;
 
     public static final class UcLoginAccount extends AliasableSqlTable<UcLoginAccount> {
         public final SqlColumn<String> id = column("id", JDBCType.VARCHAR);
@@ -26,11 +26,11 @@ public final class UcLoginAccountDynamicSqlSupport {
 
         public final SqlColumn<String> openCode = column("open_code", JDBCType.VARCHAR);
 
-        public final SqlColumn<Boolean> category = column("category", JDBCType.BIT);
+        public final SqlColumn<String> category = column("category", JDBCType.VARCHAR);
 
         public final SqlColumn<String> ctime = column("ctime", JDBCType.VARCHAR);
 
-        public final SqlColumn<Boolean> status = column("`status`", JDBCType.BIT);
+        public final SqlColumn<String> status = column("`status`", JDBCType.VARCHAR);
 
         public UcLoginAccount() {
             super("uc_login_account", UcLoginAccount::new);

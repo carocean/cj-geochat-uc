@@ -3,10 +3,11 @@ package cj.geochat.middle.uc.restful;
 import cj.geochat.middle.uc.UserStatus;
 import cj.geochat.middle.uc.model.UcUser;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public interface IUserRestfull {
-    void addUser(UcUser user);
+    String createUser(String avatar, String nickName, String phone, String password, String countryCode, boolean isAgreeUPA) throws UnsupportedEncodingException;
 
     void removeUser(String userId);
 

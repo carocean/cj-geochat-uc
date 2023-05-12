@@ -1,4 +1,4 @@
-package cj.geochat.middle.uc.service;
+package cj.geochat.middle.uc.restful;
 
 import cj.geochat.middle.uc.LoginAccountCategory;
 import cj.geochat.middle.uc.LoginAccountStatus;
@@ -6,7 +6,7 @@ import cj.geochat.middle.uc.model.UcLoginAccount;
 
 import java.util.List;
 
-public interface ILoginAccountService {
+public interface ILoginAccountRestfull {
     String createAccount(String userId, String openCode, LoginAccountCategory category);
 
     void removeAccount(String account_id);

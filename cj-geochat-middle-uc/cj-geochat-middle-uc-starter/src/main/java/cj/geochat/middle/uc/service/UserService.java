@@ -5,9 +5,11 @@ import cj.geochat.ability.util.DateUtils;
 import cj.geochat.middle.uc.UserStatus;
 import cj.geochat.middle.uc.mapper.UcUserMapper;
 import cj.geochat.middle.uc.model.UcUser;
+import com.github.f4b6a3.ulid.UlidCreator;
 import org.mybatis.dynamic.sql.SqlBuilder;
 import org.mybatis.dynamic.sql.render.RenderingStrategies;
 import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +26,21 @@ public class UserService implements IUserService {
 
     @Transactional
     @Override
-    public void addUser(UcUser user) {
+    public String createUser(String avatar, String nickName, String phone, String password, String countryCode, boolean isAgreeUPA) {
+        UcUser user = new UcUser();
+        user.setId(UlidCreator.getUlid().toLowerCase());
+        user.setStatus(UserStatus.normal.name());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(password));
+        user.setPhone(phone);
+        user.setNickName(nickName);
+        user.setAvatar(avatar);
+        user.setAgreeUpa(isAgreeUPA);
+        user.setCountryCode(countryCode);
+        user.setCtime(DateUtils.dateToLen17(new Date(System.currentTimeMillis())));
+        user.setUpdatePwdTime(user.getCtime());
         userMapper.insertSelective(user);
+        return user.getId();
     }
 
     @Transactional
@@ -49,7 +64,7 @@ public class UserService implements IUserService {
     @DataSourceConfig.ReadOnly
     @Override
     public UcUser getUser(String userId) {
-        return userMapper.selectByPrimaryKey(userId).get();
+        return userMapper.selectByPrimaryKey(userId).orElse(null);
     }
 
     @Transactional
@@ -81,24 +96,9 @@ public class UserService implements IUserService {
     @Transactional
     @Override
     public void updateStatus(String userId, UserStatus status) {
-        byte state = 0;
-        switch (status) {
-            case normal:
-                state = 0;
-                break;
-            case personalStop:
-                state = 1;
-                break;
-            case platformFrozen:
-                state = 2;
-                break;
-            default:
-                throw new RuntimeException("不支持的状态。status=" + status);
-        }
-        byte finalState = state;
         userMapper.update(c -> c
                 .set(ucUser.status)
-                .equalTo(finalState)
+                .equalTo(status.name())
                 .where(ucUser.id, SqlBuilder.isEqualTo(userId))
         );
     }

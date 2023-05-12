@@ -23,17 +23,19 @@ public final class UcUserDynamicSqlSupport {
 
     public static final SqlColumn<String> password = ucUser.password;
 
-    public static final SqlColumn<String> salt = ucUser.salt;
-
     public static final SqlColumn<String> majorAccount = ucUser.majorAccount;
 
-    public static final SqlColumn<Byte> status = ucUser.status;
+    public static final SqlColumn<String> status = ucUser.status;
 
     public static final SqlColumn<String> lastLoginTime = ucUser.lastLoginTime;
 
     public static final SqlColumn<String> updatePwdTime = ucUser.updatePwdTime;
 
     public static final SqlColumn<String> ctime = ucUser.ctime;
+
+    public static final SqlColumn<String> countryCode = ucUser.countryCode;
+
+    public static final SqlColumn<Boolean> agreeUpa = ucUser.agreeUpa;
 
     public static final class UcUser extends AliasableSqlTable<UcUser> {
         public final SqlColumn<String> id = column("id", JDBCType.VARCHAR);
@@ -52,17 +54,19 @@ public final class UcUserDynamicSqlSupport {
 
         public final SqlColumn<String> password = column("`password`", JDBCType.VARCHAR);
 
-        public final SqlColumn<String> salt = column("salt", JDBCType.VARCHAR);
-
         public final SqlColumn<String> majorAccount = column("major_account", JDBCType.VARCHAR);
 
-        public final SqlColumn<Byte> status = column("`status`", JDBCType.TINYINT);
+        public final SqlColumn<String> status = column("`status`", JDBCType.VARCHAR);
 
         public final SqlColumn<String> lastLoginTime = column("last_login_time", JDBCType.VARCHAR);
 
         public final SqlColumn<String> updatePwdTime = column("update_pwd_time", JDBCType.VARCHAR);
 
         public final SqlColumn<String> ctime = column("ctime", JDBCType.VARCHAR);
+
+        public final SqlColumn<String> countryCode = column("country_code", JDBCType.VARCHAR);
+
+        public final SqlColumn<Boolean> agreeUpa = column("agree_upa", JDBCType.BIT);
 
         public UcUser() {
             super("uc_user", UcUser::new);

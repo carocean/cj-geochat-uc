@@ -1,11 +1,11 @@
-package cj.geochat.middle.uc.service;
+package cj.geochat.middle.uc.restful;
 
 import cj.geochat.middle.uc.model.UcRole;
 import cj.geochat.middle.uc.model.UcUser;
 
 import java.util.List;
 
-public interface IRoleService {
+public interface IRoleRestfull {
     String createRole(String roleCode,String roleName,String note);
 
     void removeRole(String roleId);
@@ -25,5 +25,4 @@ public interface IRoleService {
     List<UcRole> listRoleByUser(String userId);
 
     List<UcUser> listUserByRole(String roleId);
-
 }
