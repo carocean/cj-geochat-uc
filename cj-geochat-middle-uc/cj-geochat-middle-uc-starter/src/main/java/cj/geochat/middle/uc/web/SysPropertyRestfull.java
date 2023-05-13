@@ -2,7 +2,6 @@ package cj.geochat.middle.uc.web;
 
 import cj.geochat.ability.api.annotation.ApiResult;
 import cj.geochat.middle.uc.model.SysProps;
-import cj.geochat.middle.uc.restful.ISysPropertyRestfull;
 import cj.geochat.middle.uc.service.ISysPropertyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -26,4 +26,13 @@ public interface IRoleService {
 
     List<UcUser> listUserByRole(String roleId);
 
+
+    void addAuthorityToApp(String roleId, String appId);
+
+    void removeAuthorityFromApp(String roleId, String appId);
+
+    List<String> listAuthorityCodeOfApp(String appId);
+
+
+
 }

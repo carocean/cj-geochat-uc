@@ -4,7 +4,6 @@ import cj.geochat.ability.api.annotation.ApiResult;
 import cj.geochat.middle.uc.LoginAccountCategory;
 import cj.geochat.middle.uc.LoginAccountStatus;
 import cj.geochat.middle.uc.model.UcLoginAccount;
-import cj.geochat.middle.uc.restful.ILoginAccountRestfull;
 import cj.geochat.middle.uc.service.ILoginAccountService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

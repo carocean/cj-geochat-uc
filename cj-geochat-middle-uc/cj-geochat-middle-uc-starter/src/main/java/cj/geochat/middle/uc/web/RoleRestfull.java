@@ -3,7 +3,6 @@ package cj.geochat.middle.uc.web;
 import cj.geochat.ability.api.annotation.ApiResult;
 import cj.geochat.middle.uc.model.UcRole;
 import cj.geochat.middle.uc.model.UcUser;
-import cj.geochat.middle.uc.restful.IRoleRestfull;
 import cj.geochat.middle.uc.service.IRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -112,5 +111,32 @@ public class RoleRestfull implements IRoleRestfull {
     @Override
     public List<UcUser> listUserByRole(String roleId) {
         return roleService.listUserByRole(roleId);
+    }
+
+    @GetMapping("/addAuthorityToApp")
+    @ApiResult
+    @ApiOperation("添加授权到应用")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public void addAuthorityToApp(String roleId, String appId) {
+        roleService.addAuthorityToApp(roleId, appId);
+    }
+
+    @GetMapping("/removeAuthorityFromApp")
+    @ApiResult
+    @ApiOperation("移除授权从应用")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public void removeAuthorityFromApp(String roleId, String appId) {
+        roleService.removeAuthorityFromApp(roleId, appId);
+    }
+
+    @GetMapping("/listAuthorityCodeOfApp")
+    @ApiResult
+    @ApiOperation("列出应用的授权")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public List<String> listAuthorityCodeOfApp(String appId) {
+        return roleService.listAuthorityCodeOfApp(appId);
     }
 }

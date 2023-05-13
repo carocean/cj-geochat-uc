@@ -19,10 +19,6 @@
     <dependencies>
         <dependency>
             <groupId>cj.geochat</groupId>
-            <artifactId>cj-geochat-ability-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cj.geochat</groupId>
             <artifactId>cj-geochat-ability-banner</artifactId>
         </dependency>
         <dependency>

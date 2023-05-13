@@ -2,7 +2,6 @@ package cj.geochat.middle.uc.web;
 
 import cj.geochat.ability.api.annotation.ApiResult;
 import cj.geochat.middle.uc.model.UcWechat;
-import cj.geochat.middle.uc.restful.IWechatRestfull;
 import cj.geochat.middle.uc.service.IWechatService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

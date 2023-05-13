@@ -2,6 +2,7 @@ package cj.geochat.middle.uc.service;
 
 import cj.geochat.ability.mybatis.config.DataSourceConfig;
 import cj.geochat.middle.uc.mapper.*;
+import cj.geochat.middle.uc.model.PaAppAuthority;
 import cj.geochat.middle.uc.model.UcRole;
 import cj.geochat.middle.uc.model.UcUser;
 import cj.geochat.middle.uc.model.UcUserRole;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RoleService implements IRoleService {
@@ -23,6 +25,8 @@ public class RoleService implements IRoleService {
     UcUserRoleMapper userRoleMapper;
     @Resource
     UcUserMapper userMapper;
+    @Resource
+    PaAppAuthorityMapper paAppAuthorityMapper;
 
     @Transactional
     @Override
@@ -116,5 +120,36 @@ public class RoleService implements IRoleService {
                 .build()
                 .render(RenderingStrategies.MYBATIS3)
         );
+    }
+
+    @Transactional
+    @Override
+    public void addAuthorityToApp(String roleId, String appId) {
+        PaAppAuthority paAppAuthority = new PaAppAuthority();
+        paAppAuthority.setId(UlidCreator.getUlid().toLowerCase());
+        paAppAuthority.setAppId(appId);
+        paAppAuthority.setRoleId(roleId);
+        paAppAuthorityMapper.insertSelective(paAppAuthority);
+    }
+
+    @Transactional
+    @Override
+    public void removeAuthorityFromApp(String roleId, String appId) {
+        paAppAuthorityMapper.delete(c -> c
+                .where(PaAppAuthorityDynamicSqlSupport.appId, SqlBuilder.isEqualTo(appId))
+                .and(PaAppAuthorityDynamicSqlSupport.roleId, SqlBuilder.isEqualTo(roleId))
+        );
+    }
+
+    @DataSourceConfig.ReadOnly
+    @Override
+    public List<String> listAuthorityCodeOfApp(String appId) {
+        return roleMapper.selectMany(SqlBuilder.select(UcRoleDynamicSqlSupport.ucRole.allColumns())
+                .from(UcRoleDynamicSqlSupport.ucRole)
+                .join(PaAppAuthorityDynamicSqlSupport.paAppAuthority)
+                .on(PaAppAuthorityDynamicSqlSupport.roleId, SqlBuilder.equalTo(UcRoleDynamicSqlSupport.id))
+                .where(PaAppAuthorityDynamicSqlSupport.appId, SqlBuilder.isEqualTo(appId))
+                .build().render(RenderingStrategies.MYBATIS3)
+        ).stream().map(e -> e.getRoleCode()).collect(Collectors.toList());
     }
 }

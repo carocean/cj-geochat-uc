@@ -1,4 +1,4 @@
-package cj.geochat.middle.uc.restful;
+package cj.geochat.middle.uc.web;
 
 import cj.geochat.middle.uc.LoggerEventType;
 import cj.geochat.middle.uc.model.SysLoggerRegister;

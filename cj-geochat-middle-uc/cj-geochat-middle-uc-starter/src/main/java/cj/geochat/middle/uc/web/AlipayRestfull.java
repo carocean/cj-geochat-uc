@@ -2,7 +2,6 @@ package cj.geochat.middle.uc.web;
 
 import cj.geochat.ability.api.annotation.ApiResult;
 import cj.geochat.middle.uc.model.UcAlipay;
-import cj.geochat.middle.uc.restful.IAlipayRestfull;
 import cj.geochat.middle.uc.service.IAlipayService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

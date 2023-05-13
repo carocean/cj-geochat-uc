@@ -107,9 +107,135 @@
           <list>
             <TableInfo>
               <option name="database" value="geochat.uc" />
+              <option name="domainName" value="AppCapability" />
+              <option name="tableComment" value="应用能力&#10;对应oauth2的scope" />
+              <option name="tableName" value="app_capability" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="AppCategory" />
+              <option name="tableComment" value="应用分类&#10;如视频播放、生活服务、音乐音频、办公学习、购物商场等" />
+              <option name="tableName" value="app_category" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="AppResourceId" />
+              <option name="tableComment" value="应用资源&#10;对应oauth2在地微平台的应用资源是指通过网关可访问的微服务，即将微服务名看成应用资源" />
+              <option name="tableName" value="app_resource_id" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="AppType" />
+              <option name="tableComment" value="应用类型&#10;对标苹果应用市场，有移动应用、pad应用、pc应用、网页应用" />
+              <option name="tableName" value="app_type" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="Application" />
+              <option name="tableComment" value="应用&#10;oauth2的client" />
+              <option name="tableName" value="application" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppAuthority" />
+              <option name="tableComment" value="应用权限&#10;即应用拥有的角色" />
+              <option name="tableName" value="pa_app_authority" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppCapability" />
+              <option name="tableComment" value="指派应用能力&#10;对应oauth2的scope" />
+              <option name="tableName" value="pa_app_capability" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppGrantType" />
+              <option name="tableComment" value="指派授权类型&#10;从认证中心得到支持的授权类型进行分配，有：authorization_code,password,refresh_token,implicit,client_credentials等" />
+              <option name="tableName" value="pa_app_grant_type" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppRedirectUri" />
+              <option name="tableComment" value="指派应用返回地址&#10;对应oauth2的redirect_uri" />
+              <option name="tableName" value="pa_app_redirect_uri" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppResourceId" />
+              <option name="tableComment" value="指派应用资源" />
+              <option name="tableName" value="pa_app_resource_id" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysLoggerEvent" />
+              <option name="tableComment" value="事件日志表&#10;记录操作，如修改密码、更新用户及账号状态等" />
+              <option name="tableName" value="sys_logger_event" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysLoggerLogin" />
+              <option name="tableComment" value="登录日志表。&#10;事件：登录、退出&#10;什么时间在什么设备上用哪个登录账号登录的？登录成功与否。" />
+              <option name="tableName" value="sys_logger_login" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
               <option name="domainName" value="SysLoggerRegister" />
               <option name="tableComment" value="用户注册日志表，包括添加的新登录账号。&#10;从什么设备注册的，注册方式是什么（如通过新建登录账号注册）。" />
               <option name="tableName" value="sys_logger_register" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="SysProps" />
+              <option name="tableComment" value="系统属性表。&#10;用于配置系统的全局变量" />
+              <option name="tableName" value="sys_props" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcAlipay" />
+              <option name="tableComment" value="支付宝信息表&#10;与登录账号表中以支付宝登录方式的open_code关联" />
+              <option name="tableName" value="uc_alipay" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcDevice" />
+              <option name="tableComment" value="设备表&#10;用户登录所在的设备信息" />
+              <option name="tableName" value="uc_device" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcLoginAccount" />
+              <option name="tableComment" value="登录账号表。此表为支持多种登录方式，如手机号、邮件、微信、支付宝等。&#10;不包括密码信息，因为用户不论多少登录方式，身份只有一个。" />
+              <option name="tableName" value="uc_login_account" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcRole" />
+              <option name="tableComment" value="角色表&#10;可参考mac的角色设置。uc只定义角色，角色能干什么由子系统解释" />
+              <option name="tableName" value="uc_role" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUser" />
+              <option name="tableComment" value="用户信息表" />
+              <option name="tableName" value="uc_user" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUserDevice" />
+              <option name="tableComment" value="用户设备表" />
+              <option name="tableName" value="uc_user_device" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcUserRole" />
+              <option name="tableComment" value="用户角色分配表" />
+              <option name="tableName" value="uc_user_role" />
+            </TableInfo>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="UcWechat" />
+              <option name="tableComment" value="微信信息表&#10;与登录账号表中以微信登录方式的open_code关联" />
+              <option name="tableName" value="uc_wechat" />
             </TableInfo>
           </list>
         </option>
@@ -124,6 +250,106 @@
     </option>
     <option name="tableInfoMap">
       <map>
+        <entry key="geochat.uc#app_capability">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="AppCapability" />
+              <option name="tableComment" value="应用能力&#10;对应oauth2的scope" />
+              <option name="tableName" value="app_capability" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#app_category">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="AppCategory" />
+              <option name="tableComment" value="应用分类&#10;如视频播放、生活服务、音乐音频、办公学习、购物商场等" />
+              <option name="tableName" value="app_category" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#app_resource_id">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="AppResourceId" />
+              <option name="tableComment" value="应用资源&#10;对应oauth2在地微平台的应用资源是指通过网关可访问的微服务，即将微服务名看成应用资源" />
+              <option name="tableName" value="app_resource_id" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#app_type">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="AppType" />
+              <option name="tableComment" value="应用类型&#10;对标苹果应用市场，有移动应用、pad应用、pc应用、网页应用" />
+              <option name="tableName" value="app_type" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#application">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="Application" />
+              <option name="tableComment" value="应用&#10;oauth2的client" />
+              <option name="tableName" value="application" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#pa_app_authority">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppAuthority" />
+              <option name="tableComment" value="应用权限&#10;即应用拥有的角色" />
+              <option name="tableName" value="pa_app_authority" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#pa_app_capability">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppCapability" />
+              <option name="tableComment" value="指派应用能力&#10;对应oauth2的scope" />
+              <option name="tableName" value="pa_app_capability" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#pa_app_grant_type">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppGrantType" />
+              <option name="tableComment" value="指派授权类型&#10;从认证中心得到支持的授权类型进行分配，有：authorization_code,password,refresh_token,implicit,client_credentials等" />
+              <option name="tableName" value="pa_app_grant_type" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#pa_app_redirect_uri">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppRedirectUri" />
+              <option name="tableComment" value="指派应用返回地址&#10;对应oauth2的redirect_uri" />
+              <option name="tableName" value="pa_app_redirect_uri" />
+            </TableInfo>
+          </value>
+        </entry>
+        <entry key="geochat.uc#pa_app_resource_id">
+          <value>
+            <TableInfo>
+              <option name="database" value="geochat.uc" />
+              <option name="domainName" value="PaAppResourceId" />
+              <option name="tableComment" value="指派应用资源" />
+              <option name="tableName" value="pa_app_resource_id" />
+            </TableInfo>
+          </value>
+        </entry>
         <entry key="geochat.uc#sys_logger_event">
           <value>
             <TableInfo>

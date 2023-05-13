@@ -3,7 +3,6 @@ package cj.geochat.middle.uc.web;
 import cj.geochat.ability.api.annotation.ApiResult;
 import cj.geochat.middle.uc.LoggerEventType;
 import cj.geochat.middle.uc.model.SysLoggerEvent;
-import cj.geochat.middle.uc.restful.ISysLoggerEventRestfull;
 import cj.geochat.middle.uc.service.ISysLoggerEventService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

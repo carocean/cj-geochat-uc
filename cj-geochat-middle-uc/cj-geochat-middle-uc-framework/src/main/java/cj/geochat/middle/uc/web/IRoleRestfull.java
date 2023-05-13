@@ -1,4 +1,4 @@
-package cj.geochat.middle.uc.restful;
+package cj.geochat.middle.uc.web;
 
 import cj.geochat.middle.uc.model.UcRole;
 import cj.geochat.middle.uc.model.UcUser;
@@ -25,4 +25,11 @@ public interface IRoleRestfull {
     List<UcRole> listRoleByUser(String userId);
 
     List<UcUser> listUserByRole(String roleId);
+
+
+    void addAuthorityToApp(String roleId, String appId);
+
+    void removeAuthorityFromApp(String roleId, String appId);
+
+    List<String> listAuthorityCodeOfApp(String appId);
 }

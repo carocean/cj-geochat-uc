@@ -3,7 +3,6 @@ package cj.geochat.middle.uc.web;
 import cj.geochat.ability.api.annotation.ApiResult;
 import cj.geochat.middle.uc.UserStatus;
 import cj.geochat.middle.uc.model.UcUser;
-import cj.geochat.middle.uc.restful.IUserRestfull;
 import cj.geochat.middle.uc.surface.IRegisterUserSurface;
 import cj.geochat.middle.uc.service.IUserService;
 import io.swagger.annotations.Api;
