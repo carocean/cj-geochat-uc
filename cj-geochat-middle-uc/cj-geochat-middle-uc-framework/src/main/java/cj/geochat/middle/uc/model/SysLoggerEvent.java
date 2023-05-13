@@ -16,10 +16,10 @@ public class SysLoggerEvent {
 
     /**
      * Column: event_type
-     * Type: TINYINT(3)
+     * Type: VARCHAR(10)
      * Remark: 事件类型。0=修改密码；1=修改用户状态；2=修改账号状态，等等
      */
-    private Byte eventType;
+    private String eventType;
 
     /**
      * Column: event_title

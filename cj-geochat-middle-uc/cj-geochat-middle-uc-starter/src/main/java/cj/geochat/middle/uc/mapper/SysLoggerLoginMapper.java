@@ -41,7 +41,7 @@ public interface SysLoggerLoginMapper extends CommonCountMapper, CommonDeleteMap
     @SelectProvider(type=SqlProviderAdapter.class, method="select")
     @Results(id="SysLoggerLoginResult", value = {
         @Result(column="id", property="id", jdbcType=JdbcType.VARCHAR, id=true),
-        @Result(column="event_type", property="eventType", jdbcType=JdbcType.TINYINT),
+        @Result(column="event_type", property="eventType", jdbcType=JdbcType.VARCHAR),
         @Result(column="event_title", property="eventTitle", jdbcType=JdbcType.VARCHAR),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.VARCHAR),
         @Result(column="account_id", property="accountId", jdbcType=JdbcType.VARCHAR),

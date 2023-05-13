@@ -9,7 +9,7 @@ public final class SysLoggerEventDynamicSqlSupport {
 
     public static final SqlColumn<String> id = sysLoggerEvent.id;
 
-    public static final SqlColumn<Byte> eventType = sysLoggerEvent.eventType;
+    public static final SqlColumn<String> eventType = sysLoggerEvent.eventType;
 
     public static final SqlColumn<String> eventTitle = sysLoggerEvent.eventTitle;
 
@@ -28,7 +28,7 @@ public final class SysLoggerEventDynamicSqlSupport {
     public static final class SysLoggerEvent extends AliasableSqlTable<SysLoggerEvent> {
         public final SqlColumn<String> id = column("id", JDBCType.VARCHAR);
 
-        public final SqlColumn<Byte> eventType = column("event_type", JDBCType.TINYINT);
+        public final SqlColumn<String> eventType = column("event_type", JDBCType.VARCHAR);
 
         public final SqlColumn<String> eventTitle = column("event_title", JDBCType.VARCHAR);
 

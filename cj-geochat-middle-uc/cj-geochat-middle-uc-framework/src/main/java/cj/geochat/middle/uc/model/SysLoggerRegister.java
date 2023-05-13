@@ -16,10 +16,10 @@ public class SysLoggerRegister {
 
     /**
      * Column: event_type
-     * Type: TINYINT(3)
+     * Type: VARCHAR(10)
      * Remark: 事件类型。0=注册
      */
-    private Byte eventType;
+    private String eventType;
 
     /**
      * Column: event_title
