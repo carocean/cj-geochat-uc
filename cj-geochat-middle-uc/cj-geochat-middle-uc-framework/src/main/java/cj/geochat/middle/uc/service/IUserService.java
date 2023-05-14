@@ -6,7 +6,7 @@ import cj.geochat.middle.uc.model.UcUser;
 import java.util.List;
 
 public interface IUserService {
-    String createUser(String avatar, String nickName, String phone, String password, String countryCode, boolean isAgreeUPA);
+    String createUser(String avatar, String nickName, String password, String countryCode,String countryName, boolean isAgreeUPA);
 
     void removeUser(String userId);
 
@@ -28,4 +28,13 @@ public interface IUserService {
     void updateIntro(String userId, String intro);
 
     void updateMajorAccount(String userId, String accountId);
+
+    UcUser findUserByPhone(String phone);
+
+    UcUser findUserByEmail(String email);
+
+    void updatePhone(String userId,String phone);
+
+    void updateEmail(String userId,String email);
+
 }

@@ -33,7 +33,7 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    BasicColumn[] selectList = BasicColumn.columnList(id, roleCode, roleName, note);
+    BasicColumn[] selectList = BasicColumn.columnList(id, roleCode, roleName, note, order);
 
     /**
      * @mbg.generated generated automatically, do not modify!
@@ -43,7 +43,8 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
         @Result(column="id", property="id", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="role_code", property="roleCode", jdbcType=JdbcType.VARCHAR),
         @Result(column="role_name", property="roleName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="note", property="note", jdbcType=JdbcType.VARCHAR)
+        @Result(column="note", property="note", jdbcType=JdbcType.VARCHAR),
+        @Result(column="order", property="order", jdbcType=JdbcType.INTEGER)
     })
     List<UcRole> selectMany(SelectStatementProvider selectStatement);
 
@@ -86,6 +87,7 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(roleCode).toProperty("roleCode")
             .map(roleName).toProperty("roleName")
             .map(note).toProperty("note")
+            .map(order).toProperty("order")
         );
     }
 
@@ -98,6 +100,7 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(roleCode).toProperty("roleCode")
             .map(roleName).toProperty("roleName")
             .map(note).toProperty("note")
+            .map(order).toProperty("order")
         );
     }
 
@@ -110,6 +113,7 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(roleCode).toPropertyWhenPresent("roleCode", row::getRoleCode)
             .map(roleName).toPropertyWhenPresent("roleName", row::getRoleName)
             .map(note).toPropertyWhenPresent("note", row::getNote)
+            .map(order).toPropertyWhenPresent("order", row::getOrder)
         );
     }
 
@@ -157,7 +161,8 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
         return dsl.set(id).equalTo(row::getId)
                 .set(roleCode).equalTo(row::getRoleCode)
                 .set(roleName).equalTo(row::getRoleName)
-                .set(note).equalTo(row::getNote);
+                .set(note).equalTo(row::getNote)
+                .set(order).equalTo(row::getOrder);
     }
 
     /**
@@ -167,7 +172,8 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
         return dsl.set(id).equalToWhenPresent(row::getId)
                 .set(roleCode).equalToWhenPresent(row::getRoleCode)
                 .set(roleName).equalToWhenPresent(row::getRoleName)
-                .set(note).equalToWhenPresent(row::getNote);
+                .set(note).equalToWhenPresent(row::getNote)
+                .set(order).equalToWhenPresent(row::getOrder);
     }
 
     /**
@@ -178,6 +184,7 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
             c.set(roleCode).equalTo(row::getRoleCode)
             .set(roleName).equalTo(row::getRoleName)
             .set(note).equalTo(row::getNote)
+            .set(order).equalTo(row::getOrder)
             .where(id, isEqualTo(row::getId))
         );
     }
@@ -190,6 +197,7 @@ public interface UcRoleMapper extends CommonCountMapper, CommonDeleteMapper, Com
             c.set(roleCode).equalToWhenPresent(row::getRoleCode)
             .set(roleName).equalToWhenPresent(row::getRoleName)
             .set(note).equalToWhenPresent(row::getNote)
+            .set(order).equalToWhenPresent(row::getOrder)
             .where(id, isEqualTo(row::getId))
         );
     }

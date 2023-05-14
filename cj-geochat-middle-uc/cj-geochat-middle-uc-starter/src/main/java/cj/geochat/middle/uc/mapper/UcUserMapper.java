@@ -33,7 +33,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    BasicColumn[] selectList = BasicColumn.columnList(id, nickName, realName, userIntro, avatar, email, phone, password, majorAccount, status, lastLoginTime, updatePwdTime, ctime, countryCode, agreeUpa);
+    BasicColumn[] selectList = BasicColumn.columnList(id, nickName, realName, userIntro, avatar, email, phone, password, majorAccount, status, lastLoginTime, updatePwdTime, ctime, countryCode, countrName, agreeUpa);
 
     /**
      * @mbg.generated generated automatically, do not modify!
@@ -54,6 +54,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
         @Result(column="update_pwd_time", property="updatePwdTime", jdbcType=JdbcType.VARCHAR),
         @Result(column="ctime", property="ctime", jdbcType=JdbcType.VARCHAR),
         @Result(column="country_code", property="countryCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="countr_name", property="countrName", jdbcType=JdbcType.VARCHAR),
         @Result(column="agree_upa", property="agreeUpa", jdbcType=JdbcType.BIT)
     })
     List<UcUser> selectMany(SelectStatementProvider selectStatement);
@@ -107,6 +108,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(updatePwdTime).toProperty("updatePwdTime")
             .map(ctime).toProperty("ctime")
             .map(countryCode).toProperty("countryCode")
+            .map(countrName).toProperty("countrName")
             .map(agreeUpa).toProperty("agreeUpa")
         );
     }
@@ -130,6 +132,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(updatePwdTime).toProperty("updatePwdTime")
             .map(ctime).toProperty("ctime")
             .map(countryCode).toProperty("countryCode")
+            .map(countrName).toProperty("countrName")
             .map(agreeUpa).toProperty("agreeUpa")
         );
     }
@@ -153,6 +156,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .map(updatePwdTime).toPropertyWhenPresent("updatePwdTime", row::getUpdatePwdTime)
             .map(ctime).toPropertyWhenPresent("ctime", row::getCtime)
             .map(countryCode).toPropertyWhenPresent("countryCode", row::getCountryCode)
+            .map(countrName).toPropertyWhenPresent("countrName", row::getCountrName)
             .map(agreeUpa).toPropertyWhenPresent("agreeUpa", row::getAgreeUpa)
         );
     }
@@ -212,6 +216,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
                 .set(updatePwdTime).equalTo(row::getUpdatePwdTime)
                 .set(ctime).equalTo(row::getCtime)
                 .set(countryCode).equalTo(row::getCountryCode)
+                .set(countrName).equalTo(row::getCountrName)
                 .set(agreeUpa).equalTo(row::getAgreeUpa);
     }
 
@@ -233,6 +238,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
                 .set(updatePwdTime).equalToWhenPresent(row::getUpdatePwdTime)
                 .set(ctime).equalToWhenPresent(row::getCtime)
                 .set(countryCode).equalToWhenPresent(row::getCountryCode)
+                .set(countrName).equalToWhenPresent(row::getCountrName)
                 .set(agreeUpa).equalToWhenPresent(row::getAgreeUpa);
     }
 
@@ -254,6 +260,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .set(updatePwdTime).equalTo(row::getUpdatePwdTime)
             .set(ctime).equalTo(row::getCtime)
             .set(countryCode).equalTo(row::getCountryCode)
+            .set(countrName).equalTo(row::getCountrName)
             .set(agreeUpa).equalTo(row::getAgreeUpa)
             .where(id, isEqualTo(row::getId))
         );
@@ -277,6 +284,7 @@ public interface UcUserMapper extends CommonCountMapper, CommonDeleteMapper, Com
             .set(updatePwdTime).equalToWhenPresent(row::getUpdatePwdTime)
             .set(ctime).equalToWhenPresent(row::getCtime)
             .set(countryCode).equalToWhenPresent(row::getCountryCode)
+            .set(countrName).equalToWhenPresent(row::getCountrName)
             .set(agreeUpa).equalToWhenPresent(row::getAgreeUpa)
             .where(id, isEqualTo(row::getId))
         );

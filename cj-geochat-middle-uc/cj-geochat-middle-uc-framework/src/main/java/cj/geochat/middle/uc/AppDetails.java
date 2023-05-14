@@ -11,7 +11,7 @@ public class AppDetails {
     String appSecret;
     List<String> resourceIds = new ArrayList<>();
     List<String> scopes = new ArrayList<>();
-    List<String> authorizedGrantTypes = new ArrayList<>();
+    List<String> grantTypes = new ArrayList<>();
     List<String> redirectUris = new ArrayList<>();
     List<String> authorities = new ArrayList<>();
     long accessTokenValidity;

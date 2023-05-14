@@ -15,6 +15,8 @@ public final class UcRoleDynamicSqlSupport {
 
     public static final SqlColumn<String> note = ucRole.note;
 
+    public static final SqlColumn<Integer> order = ucRole.order;
+
     public static final class UcRole extends AliasableSqlTable<UcRole> {
         public final SqlColumn<String> id = column("id", JDBCType.VARCHAR);
 
@@ -23,6 +25,8 @@ public final class UcRoleDynamicSqlSupport {
         public final SqlColumn<String> roleName = column("role_name", JDBCType.VARCHAR);
 
         public final SqlColumn<String> note = column("note", JDBCType.VARCHAR);
+
+        public final SqlColumn<Integer> order = column("`order`", JDBCType.INTEGER);
 
         public UcRole() {
             super("uc_role", UcRole::new);

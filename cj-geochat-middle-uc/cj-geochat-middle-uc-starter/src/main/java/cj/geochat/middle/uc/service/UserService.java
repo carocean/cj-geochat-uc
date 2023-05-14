@@ -3,6 +3,7 @@ package cj.geochat.middle.uc.service;
 import cj.geochat.ability.mybatis.config.DataSourceConfig;
 import cj.geochat.ability.util.DateUtils;
 import cj.geochat.middle.uc.UserStatus;
+import cj.geochat.middle.uc.mapper.UcUserDynamicSqlSupport;
 import cj.geochat.middle.uc.mapper.UcUserMapper;
 import cj.geochat.middle.uc.model.UcUser;
 import com.github.f4b6a3.ulid.UlidCreator;
@@ -26,17 +27,17 @@ public class UserService implements IUserService {
 
     @Transactional
     @Override
-    public String createUser(String avatar, String nickName, String phone, String password, String countryCode, boolean isAgreeUPA) {
+    public String createUser(String avatar, String nickName, String password, String countryCode, String countryName, boolean isAgreeUPA) {
         UcUser user = new UcUser();
         user.setId(UlidCreator.getUlid().toLowerCase());
         user.setStatus(UserStatus.normal.name());
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(password));
-        user.setPhone(phone);
         user.setNickName(nickName);
         user.setAvatar(avatar);
         user.setAgreeUpa(isAgreeUPA);
         user.setCountryCode(countryCode);
+        user.setCountrName(countryName);
         user.setCtime(DateUtils.dateToLen17(new Date(System.currentTimeMillis())));
         user.setUpdatePwdTime(user.getCtime());
         userMapper.insertSelective(user);
@@ -65,6 +66,24 @@ public class UserService implements IUserService {
     @Override
     public UcUser getUser(String userId) {
         return userMapper.selectByPrimaryKey(userId).orElse(null);
+    }
+
+    @DataSourceConfig.ReadOnly
+    @Override
+    public UcUser findUserByPhone(String phone) {
+        return userMapper.select(c -> c
+                .where(UcUserDynamicSqlSupport.phone, SqlBuilder.isEqualTo(phone))
+                .limit(1)
+        ).stream().findAny().orElse(null);
+    }
+
+    @DataSourceConfig.ReadOnly
+    @Override
+    public UcUser findUserByEmail(String email) {
+        return userMapper.select(c -> c
+                .where(UcUserDynamicSqlSupport.email, SqlBuilder.isEqualTo(email))
+                .limit(1)
+        ).stream().findAny().orElse(null);
     }
 
     @Transactional
@@ -149,5 +168,21 @@ public class UserService implements IUserService {
                 .set(ucUser.majorAccount).equalTo(accountId)
                 .where(ucUser.id, SqlBuilder.isEqualTo(userId))
         );
+    }
+@Transactional
+    @Override
+    public void updatePhone(String userId,String phone) {
+    userMapper.update(c -> c
+            .set(ucUser.phone).equalTo(phone)
+            .where(ucUser.id, SqlBuilder.isEqualTo(userId))
+    );
+    }
+@Transactional
+    @Override
+    public void updateEmail(String userId,String email) {
+    userMapper.update(c -> c
+            .set(ucUser.email).equalTo(email)
+            .where(ucUser.id, SqlBuilder.isEqualTo(userId))
+    );
     }
 }

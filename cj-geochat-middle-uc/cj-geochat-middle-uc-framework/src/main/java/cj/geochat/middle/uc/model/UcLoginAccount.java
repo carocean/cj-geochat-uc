@@ -41,12 +41,4 @@ public class UcLoginAccount {
      * Remark: 创建时间
      */
     private String ctime;
-
-    /**
-     * Column: status
-     * Type: VARCHAR(10)
-     * Default value: 0
-     * Remark: 账户状态:0=正常,1=个人停用
-     */
-    private String status;
 }

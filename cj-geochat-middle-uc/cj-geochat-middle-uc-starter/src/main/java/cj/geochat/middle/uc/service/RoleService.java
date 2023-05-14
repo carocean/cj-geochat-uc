@@ -1,6 +1,7 @@
 package cj.geochat.middle.uc.service;
 
 import cj.geochat.ability.mybatis.config.DataSourceConfig;
+import cj.geochat.ability.util.GeochatRuntimeException;
 import cj.geochat.middle.uc.mapper.*;
 import cj.geochat.middle.uc.model.PaAppAuthority;
 import cj.geochat.middle.uc.model.UcRole;
@@ -30,11 +31,12 @@ public class RoleService implements IRoleService {
 
     @Transactional
     @Override
-    public String createRole(String roleCode, String roleName, String note) {
+    public String createRole(String roleCode, String roleName, int order, String note) {
         UcRole role = new UcRole();
         role.setId(UlidCreator.getUlid().toLowerCase());
         role.setRoleCode(roleCode);
         role.setRoleName(roleName);
+        role.setOrder(order);
         role.setNote(note);
         roleMapper.insert(role);
         return role.getId();
@@ -54,6 +56,24 @@ public class RoleService implements IRoleService {
         ucUserRole.setUserId(userId);
         ucUserRole.setRoleId(roleId);
         userRoleMapper.insert(ucUserRole);
+    }
+
+    @Transactional
+    @Override
+    public void addRoleByCodeToUser(String roleCode, String userId) {
+        UcRole role = getRoleByCode(roleCode);
+        if (role == null) {
+            throw new GeochatRuntimeException("4004", String.format("Role %s does not exist", roleCode));
+        }
+        addRoleToUser(role.getId(), userId);
+    }
+
+    @DataSourceConfig.ReadOnly
+    @Override
+    public UcRole getRoleByCode(String roleCode) {
+        return roleMapper.select(c -> c
+                .where(UcRoleDynamicSqlSupport.roleCode, SqlBuilder.isEqualTo(roleCode))
+        ).stream().findAny().orElse(null);
     }
 
     @Transactional
@@ -90,8 +110,24 @@ public class RoleService implements IRoleService {
     @Override
     public List<UcRole> listRole(int limit, long offset) {
         return roleMapper.select(c -> c
+                .orderBy(UcRoleDynamicSqlSupport.order)
                 .limit(limit).offset(offset)
         );
+    }
+
+    @DataSourceConfig.ReadOnly
+    @Override
+    public List<String> listRoleCodeByUser(String userId) {
+        SelectStatementProvider provider = SqlBuilder
+                .select(UcRoleDynamicSqlSupport.ucRole.allColumns())
+                .from(UcRoleDynamicSqlSupport.ucRole, "role")
+                .join(UcUserRoleDynamicSqlSupport.ucUserRole, "ur")
+                .on(UcUserRoleDynamicSqlSupport.roleId, SqlBuilder.equalTo(UcRoleDynamicSqlSupport.id))
+                .where(UcUserRoleDynamicSqlSupport.userId, SqlBuilder.isEqualTo(userId))
+                .orderBy(UcRoleDynamicSqlSupport.order)
+                .build()
+                .render(RenderingStrategies.MYBATIS3);
+        return roleMapper.selectMany(provider).stream().map(e -> e.getRoleCode()).collect(Collectors.toList());
     }
 
     @DataSourceConfig.ReadOnly
@@ -101,8 +137,9 @@ public class RoleService implements IRoleService {
                 .select(UcRoleDynamicSqlSupport.ucRole.allColumns())
                 .from(UcRoleDynamicSqlSupport.ucRole, "role")
                 .join(UcUserRoleDynamicSqlSupport.ucUserRole, "ur")
-                .on(UcUserRoleDynamicSqlSupport.userId, SqlBuilder.equalTo(UcUserDynamicSqlSupport.id))
+                .on(UcUserRoleDynamicSqlSupport.roleId, SqlBuilder.equalTo(UcRoleDynamicSqlSupport.id))
                 .where(UcUserRoleDynamicSqlSupport.userId, SqlBuilder.isEqualTo(userId))
+                .orderBy(UcRoleDynamicSqlSupport.order)
                 .build()
                 .render(RenderingStrategies.MYBATIS3);
         return roleMapper.selectMany(provider);
@@ -149,6 +186,7 @@ public class RoleService implements IRoleService {
                 .join(PaAppAuthorityDynamicSqlSupport.paAppAuthority)
                 .on(PaAppAuthorityDynamicSqlSupport.roleId, SqlBuilder.equalTo(UcRoleDynamicSqlSupport.id))
                 .where(PaAppAuthorityDynamicSqlSupport.appId, SqlBuilder.isEqualTo(appId))
+                .orderBy(UcRoleDynamicSqlSupport.order)
                 .build().render(RenderingStrategies.MYBATIS3)
         ).stream().map(e -> e.getRoleCode()).collect(Collectors.toList());
     }

@@ -33,7 +33,7 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    BasicColumn[] selectList = BasicColumn.columnList(id, userId, openCode, category, ctime, status);
+    BasicColumn[] selectList = BasicColumn.columnList(id, userId, openCode, category, ctime);
 
     /**
      * @mbg.generated generated automatically, do not modify!
@@ -44,8 +44,7 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
         @Result(column="user_id", property="userId", jdbcType=JdbcType.VARCHAR),
         @Result(column="open_code", property="openCode", jdbcType=JdbcType.VARCHAR),
         @Result(column="category", property="category", jdbcType=JdbcType.VARCHAR),
-        @Result(column="ctime", property="ctime", jdbcType=JdbcType.VARCHAR),
-        @Result(column="status", property="status", jdbcType=JdbcType.VARCHAR)
+        @Result(column="ctime", property="ctime", jdbcType=JdbcType.VARCHAR)
     })
     List<UcLoginAccount> selectMany(SelectStatementProvider selectStatement);
 
@@ -89,7 +88,6 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
             .map(openCode).toProperty("openCode")
             .map(category).toProperty("category")
             .map(ctime).toProperty("ctime")
-            .map(status).toProperty("status")
         );
     }
 
@@ -103,7 +101,6 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
             .map(openCode).toProperty("openCode")
             .map(category).toProperty("category")
             .map(ctime).toProperty("ctime")
-            .map(status).toProperty("status")
         );
     }
 
@@ -117,7 +114,6 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
             .map(openCode).toPropertyWhenPresent("openCode", row::getOpenCode)
             .map(category).toPropertyWhenPresent("category", row::getCategory)
             .map(ctime).toPropertyWhenPresent("ctime", row::getCtime)
-            .map(status).toPropertyWhenPresent("status", row::getStatus)
         );
     }
 
@@ -166,8 +162,7 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
                 .set(userId).equalTo(row::getUserId)
                 .set(openCode).equalTo(row::getOpenCode)
                 .set(category).equalTo(row::getCategory)
-                .set(ctime).equalTo(row::getCtime)
-                .set(status).equalTo(row::getStatus);
+                .set(ctime).equalTo(row::getCtime);
     }
 
     /**
@@ -178,8 +173,7 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
                 .set(userId).equalToWhenPresent(row::getUserId)
                 .set(openCode).equalToWhenPresent(row::getOpenCode)
                 .set(category).equalToWhenPresent(row::getCategory)
-                .set(ctime).equalToWhenPresent(row::getCtime)
-                .set(status).equalToWhenPresent(row::getStatus);
+                .set(ctime).equalToWhenPresent(row::getCtime);
     }
 
     /**
@@ -191,7 +185,6 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
             .set(openCode).equalTo(row::getOpenCode)
             .set(category).equalTo(row::getCategory)
             .set(ctime).equalTo(row::getCtime)
-            .set(status).equalTo(row::getStatus)
             .where(id, isEqualTo(row::getId))
         );
     }
@@ -205,7 +198,6 @@ public interface UcLoginAccountMapper extends CommonCountMapper, CommonDeleteMap
             .set(openCode).equalToWhenPresent(row::getOpenCode)
             .set(category).equalToWhenPresent(row::getCategory)
             .set(ctime).equalToWhenPresent(row::getCtime)
-            .set(status).equalToWhenPresent(row::getStatus)
             .where(id, isEqualTo(row::getId))
         );
     }

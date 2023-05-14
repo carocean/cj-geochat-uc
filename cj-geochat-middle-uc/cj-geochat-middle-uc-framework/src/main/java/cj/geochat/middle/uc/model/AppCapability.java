@@ -16,7 +16,7 @@ public class AppCapability {
 
     /**
      * Column: ability_code
-     * Type: VARCHAR(10)
+     * Type: VARCHAR(40)
      * Remark: 能力代码
      */
     private String abilityCode;

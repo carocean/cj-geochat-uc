@@ -3,7 +3,6 @@ package cj.geochat.middle.uc.service;
 import cj.geochat.ability.mybatis.config.DataSourceConfig;
 import cj.geochat.ability.util.DateUtils;
 import cj.geochat.middle.uc.LoginAccountCategory;
-import cj.geochat.middle.uc.LoginAccountStatus;
 import cj.geochat.middle.uc.mapper.UcLoginAccountDynamicSqlSupport;
 import cj.geochat.middle.uc.mapper.UcLoginAccountMapper;
 import cj.geochat.middle.uc.model.UcLoginAccount;
@@ -27,7 +26,6 @@ public class LoginAccountService implements ILoginAccountService {
         UcLoginAccount account = new UcLoginAccount();
         account.setId(UlidCreator.getUlid().toLowerCase());
         account.setCtime(DateUtils.dateToLen17(new Date(System.currentTimeMillis())));
-        account.setStatus(LoginAccountStatus.normal.name());
         account.setUserId(userId);
         account.setCategory(category.name());
         account.setOpenCode(openCode);
@@ -55,6 +53,15 @@ public class LoginAccountService implements ILoginAccountService {
 
     @DataSourceConfig.ReadOnly
     @Override
+    public List<UcLoginAccount> listAccountOnUser(String userId, String category) {
+        return loginAccountMapper.select(c -> c
+                .where(UcLoginAccountDynamicSqlSupport.category, SqlBuilder.isEqualTo(category))
+                .and(UcLoginAccountDynamicSqlSupport.userId, SqlBuilder.isEqualTo(userId))
+        );
+    }
+
+    @DataSourceConfig.ReadOnly
+    @Override
     public UcLoginAccount getAccount(String accountId) {
         return loginAccountMapper.selectByPrimaryKey(accountId).orElse(null);
     }
@@ -76,12 +83,4 @@ public class LoginAccountService implements ILoginAccountService {
         return list.isEmpty() ? null : list.get(0);
     }
 
-    @Transactional
-    @Override
-    public void updateStatus(String accountId, LoginAccountStatus status) {
-        loginAccountMapper.update(c -> c
-                .set(UcLoginAccountDynamicSqlSupport.ucLoginAccount.status).equalTo(status.name())
-                .where(UcLoginAccountDynamicSqlSupport.ucLoginAccount.id, SqlBuilder.isEqualTo(accountId))
-        );
-    }
 }

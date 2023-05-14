@@ -35,6 +35,8 @@ public final class UcUserDynamicSqlSupport {
 
     public static final SqlColumn<String> countryCode = ucUser.countryCode;
 
+    public static final SqlColumn<String> countrName = ucUser.countrName;
+
     public static final SqlColumn<Boolean> agreeUpa = ucUser.agreeUpa;
 
     public static final class UcUser extends AliasableSqlTable<UcUser> {
@@ -65,6 +67,8 @@ public final class UcUserDynamicSqlSupport {
         public final SqlColumn<String> ctime = column("ctime", JDBCType.VARCHAR);
 
         public final SqlColumn<String> countryCode = column("country_code", JDBCType.VARCHAR);
+
+        public final SqlColumn<String> countrName = column("countr_name", JDBCType.VARCHAR);
 
         public final SqlColumn<Boolean> agreeUpa = column("agree_upa", JDBCType.BIT);
 

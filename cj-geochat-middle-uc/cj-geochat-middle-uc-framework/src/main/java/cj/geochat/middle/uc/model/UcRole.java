@@ -16,7 +16,7 @@ public class UcRole {
 
     /**
      * Column: role_code
-     * Type: VARCHAR(20)
+     * Type: VARCHAR(50)
      * Remark: 角色代码，程序使用的是角色代码
      */
     private String roleCode;
@@ -34,4 +34,12 @@ public class UcRole {
      * Remark: 描述
      */
     private String note;
+
+    /**
+     * Column: order
+     * Type: INT
+     * Default value: 0
+     * Remark: 顺序
+     */
+    private Integer order;
 }

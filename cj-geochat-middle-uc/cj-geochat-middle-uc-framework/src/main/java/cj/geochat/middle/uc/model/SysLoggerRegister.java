@@ -44,10 +44,10 @@ public class SysLoggerRegister {
 
     /**
      * Column: account_cate
-     * Type: BIT
+     * Type: VARCHAR(20)
      * Remark: 登录账号的类型。与账号表的category一致
      */
-    private Boolean accountCate;
+    private String accountCate;
 
     /**
      * Column: source_type

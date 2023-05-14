@@ -1,11 +1,10 @@
 package cj.geochat.middle.uc.surface;
 
 public interface IRegisterUserSurface {
-    String registerUserByPhone(String avatar, String nickName, String phone, String password, String countryCode, boolean isAgreeUPA);
+    String registerUser(String avatar, String nickName, String loginAccountCategory,String openCode, String password, String countryCode,String countryName, boolean isAgreeUPA);
 
-    String registerUserByEmail(String avatar, String nickName, String email, String password, String countryCode, boolean isAgreeUPA);
 
-    String registerUserByWechat(String avatar, String nickName, String openid, String countryName, String city, String province, String language, int sex);
+    String registerUserByWechat(String avatar, String nickName, String openid, String city, String province,String countryCode, String countryName, String language, int sex);
 
-    String registerUserByWechat(String avatar, String nickName, String openid,  String city, String province, String gender);
+    String registerUserByAlipay(String avatar, String nickName, String openid,  String city, String province,String countryCode, String countryName, String gender);
 }

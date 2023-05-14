@@ -17,7 +17,7 @@ public final class SysLoggerRegisterDynamicSqlSupport {
 
     public static final SqlColumn<String> accountId = sysLoggerRegister.accountId;
 
-    public static final SqlColumn<Boolean> accountCate = sysLoggerRegister.accountCate;
+    public static final SqlColumn<String> accountCate = sysLoggerRegister.accountCate;
 
     public static final SqlColumn<Byte> sourceType = sysLoggerRegister.sourceType;
 
@@ -60,7 +60,7 @@ public final class SysLoggerRegisterDynamicSqlSupport {
 
         public final SqlColumn<String> accountId = column("account_id", JDBCType.VARCHAR);
 
-        public final SqlColumn<Boolean> accountCate = column("account_cate", JDBCType.BIT);
+        public final SqlColumn<String> accountCate = column("account_cate", JDBCType.VARCHAR);
 
         public final SqlColumn<Byte> sourceType = column("source_type", JDBCType.TINYINT);
 

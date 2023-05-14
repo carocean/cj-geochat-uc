@@ -45,7 +45,7 @@ public interface SysLoggerRegisterMapper extends CommonCountMapper, CommonDelete
         @Result(column="event_title", property="eventTitle", jdbcType=JdbcType.VARCHAR),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.VARCHAR),
         @Result(column="account_id", property="accountId", jdbcType=JdbcType.VARCHAR),
-        @Result(column="account_cate", property="accountCate", jdbcType=JdbcType.BIT),
+        @Result(column="account_cate", property="accountCate", jdbcType=JdbcType.VARCHAR),
         @Result(column="source_type", property="sourceType", jdbcType=JdbcType.TINYINT),
         @Result(column="source_desc", property="sourceDesc", jdbcType=JdbcType.VARCHAR),
         @Result(column="message", property="message", jdbcType=JdbcType.VARCHAR),

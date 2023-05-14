@@ -16,7 +16,7 @@ public class AppType {
 
     /**
      * Column: type_code
-     * Type: VARCHAR(10)
+     * Type: VARCHAR(20)
      * Remark: 类型代码
      */
     private String typeCode;

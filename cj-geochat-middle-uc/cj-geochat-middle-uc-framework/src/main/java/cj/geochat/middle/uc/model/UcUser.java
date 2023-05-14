@@ -73,7 +73,6 @@ public class UcUser {
     /**
      * Column: status
      * Type: VARCHAR(10)
-     * Default value: 0
      * Remark: 0=是正常；1、个人停用；2=平台强制冻结
      */
     private String status;
@@ -105,6 +104,13 @@ public class UcUser {
      * Remark: 国家代码
      */
     private String countryCode;
+
+    /**
+     * Column: countr_name
+     * Type: VARCHAR(50)
+     * Remark: 国家名
+     */
+    private String countrName;
 
     /**
      * Column: agree_upa

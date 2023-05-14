@@ -1,7 +1,6 @@
 package cj.geochat.middle.uc.service;
 
 import cj.geochat.middle.uc.LoginAccountCategory;
-import cj.geochat.middle.uc.LoginAccountStatus;
 import cj.geochat.middle.uc.model.UcLoginAccount;
 
 import java.util.List;
@@ -19,7 +18,9 @@ public interface ILoginAccountService {
 
     void removeAccountsByUser(String userId);
 
-    UcLoginAccount findAccount(String category,String openCode);
+    UcLoginAccount findAccount(String category, String openCode);
 
-    void updateStatus(String accountId, LoginAccountStatus status);
+
+    List<UcLoginAccount> listAccountOnUser(String userId, String category);
+
 }

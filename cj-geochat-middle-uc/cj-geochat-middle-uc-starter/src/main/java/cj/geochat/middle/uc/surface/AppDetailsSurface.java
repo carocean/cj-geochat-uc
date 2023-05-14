@@ -34,20 +34,20 @@ public class AppDetailsSurface implements IAppDetailsSurface {
         var capabilities = capabilityService.listCapabilityCodeOfApp(appId);
         var resourceids = resourceIdService.listResourceCode(appId);
         var authorities = roleService.listAuthorityCodeOfApp(appId);
-        var scopes = applicationService.listGrantType(appId);
+        var grantTypes = applicationService.listGrantType(appId);
         var redirectUris = applicationService.listRedirectUri(appId);
         var details = new AppDetails();
         details.setAppKey(application.getAppKey());
         details.setAppSecret(application.getAppSecret());
         details.setAutoapprove(application.getAutoapprove());
-        details.setCreateTime(details.getCreateTime());
+        details.setCreateTime(application.getCtime());
         details.setAdditionalInformation(application.getAdditionalInformation());
         details.setAccessTokenValidity(application.getAccessTokenValidity() == null ? 0 : application.getAccessTokenValidity());
         details.setRefreshTokenValidity(application.getRefreshTokenValidity() == null ? 0 : application.getRefreshTokenValidity());
-        details.setScopes(capabilities);
+        details.setGrantTypes(grantTypes);
         details.setResourceIds(resourceids);
         details.setAuthorities(authorities);
-        details.setScopes(scopes);
+        details.setScopes(capabilities);
         details.setRedirectUris(redirectUris);
         return details;
     }

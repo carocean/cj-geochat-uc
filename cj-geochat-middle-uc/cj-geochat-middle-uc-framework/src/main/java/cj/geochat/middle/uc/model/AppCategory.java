@@ -16,7 +16,7 @@ public class AppCategory {
 
     /**
      * Column: cate_code
-     * Type: VARCHAR(10)
+     * Type: VARCHAR(40)
      * Remark: 类别代码
      */
     private String cateCode;
