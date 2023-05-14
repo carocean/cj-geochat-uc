@@ -35,7 +35,7 @@ public class AuthRestfull implements IAuthRestfull {
 
     @GetMapping("/authorization_code")
     @ApiResult
-    @ApiOperation("向认证中心申请授权码，必须先以授权码模式登录")
+    @ApiOperation("向认证中心申请授权码【必须先以授权码模式登录】")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
     public String authorizeAuthorizationCode(String state) throws IOException {
@@ -51,7 +51,7 @@ public class AuthRestfull implements IAuthRestfull {
 
     @GetMapping("/authorizeImplicit")
     @ApiResult
-    @ApiOperation("简化模式向认证中心申请令牌,必须先以简化模式登录")
+    @ApiOperation("简化模式向认证中心申请令牌【必须先以简化模式登录】")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
     public String authorizeImplicit(String state) throws IOException {
