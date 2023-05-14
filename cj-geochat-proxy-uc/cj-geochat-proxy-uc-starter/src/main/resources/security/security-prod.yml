@@ -1,5 +1,5 @@
 app:
   security:
     appKey: 01h0azh7d5ht7ge75hssxr6wc3
-    appSecret: $2a$10$CGxiP25uKtBLiNYdIjvIkO5PNJ9qBzjM8TK5vikgVGJaCk3y6Fn5e
+    appSecret: 01h0dehtwbpk2whgtp4r50e048
     scopes: all

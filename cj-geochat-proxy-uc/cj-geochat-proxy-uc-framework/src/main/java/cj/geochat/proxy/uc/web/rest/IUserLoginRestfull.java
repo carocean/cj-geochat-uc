@@ -1,11 +1,12 @@
 package cj.geochat.proxy.uc.web.rest;
 
+import cj.geochat.proxy.uc.IReadFully;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 
-public interface IUserLoginRestfull {
+public interface IUserLoginRestfull extends IReadFully {
     String authorization_code(String username, String password) throws IOException;
 
     String implicit(String username, String password) throws IOException;
@@ -16,13 +17,4 @@ public interface IUserLoginRestfull {
 
     String refresh_token(String refresh_token) throws IOException;
 
-    default byte[] readFully(InputStream inputStream) throws IOException {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        byte[] buffer = new byte[80960];
-        int len = 0;
-        while ((len = inputStream.read(buffer)) >= 0) {
-            outputStream.write(buffer, 0, len);
-        }
-        return outputStream.toByteArray();
-    }
 }

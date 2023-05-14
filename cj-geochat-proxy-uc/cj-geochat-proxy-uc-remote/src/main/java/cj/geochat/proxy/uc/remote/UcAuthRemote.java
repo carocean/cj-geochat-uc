@@ -62,7 +62,7 @@ public interface UcAuthRemote extends IAuthRemote {
     @Override
     Response login(@RequestParam String username, @RequestParam String password);
 
-    @RequestMapping(value = "/oauth/authorize", method = RequestMethod.POST)
+    @RequestMapping(value = "/oauth/authorize", method = RequestMethod.GET)
     @Override
     Response authorize(
             @RequestParam String response_type,
@@ -70,5 +70,6 @@ public interface UcAuthRemote extends IAuthRemote {
             @RequestParam(required = false) String scope,
             @RequestParam(required = false) String redirect_uri,
             @RequestParam(required = false) String state) throws IOException;
+
 
 }
