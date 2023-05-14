@@ -21,10 +21,7 @@
             <groupId>cj.geochat</groupId>
             <artifactId>cj-geochat-ability-banner</artifactId>
         </dependency>
-        <dependency>
-            <groupId>cj.geochat</groupId>
-            <artifactId>cj-geochat-ability-web</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>cj.geochat</groupId>
             <artifactId>cj-geochat-ability-api</artifactId>

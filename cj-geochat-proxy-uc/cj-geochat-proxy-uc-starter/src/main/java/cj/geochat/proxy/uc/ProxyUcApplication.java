@@ -7,7 +7,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication(scanBasePackages = {"cj.geochat.proxy.uc"})
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "cj.geochat.proxy.uc")
 public class ProxyUcApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProxyUcApplication.class, args);

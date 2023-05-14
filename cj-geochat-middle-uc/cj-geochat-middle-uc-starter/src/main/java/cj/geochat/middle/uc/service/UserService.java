@@ -10,7 +10,9 @@ import com.github.f4b6a3.ulid.UlidCreator;
 import org.mybatis.dynamic.sql.SqlBuilder;
 import org.mybatis.dynamic.sql.render.RenderingStrategies;
 import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,8 @@ import static cj.geochat.middle.uc.mapper.UcUserDynamicSqlSupport.ucUser;
 public class UserService implements IUserService {
     @Resource
     UcUserMapper userMapper;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Transactional
     @Override
@@ -31,8 +35,7 @@ public class UserService implements IUserService {
         UcUser user = new UcUser();
         user.setId(UlidCreator.getUlid().toLowerCase());
         user.setStatus(UserStatus.normal.name());
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(password));
+        user.setPassword(passwordEncoder.encode(password));
         user.setNickName(nickName);
         user.setAvatar(avatar);
         user.setAgreeUpa(isAgreeUPA);
@@ -169,20 +172,22 @@ public class UserService implements IUserService {
                 .where(ucUser.id, SqlBuilder.isEqualTo(userId))
         );
     }
-@Transactional
+
+    @Transactional
     @Override
-    public void updatePhone(String userId,String phone) {
-    userMapper.update(c -> c
-            .set(ucUser.phone).equalTo(phone)
-            .where(ucUser.id, SqlBuilder.isEqualTo(userId))
-    );
+    public void updatePhone(String userId, String phone) {
+        userMapper.update(c -> c
+                .set(ucUser.phone).equalTo(phone)
+                .where(ucUser.id, SqlBuilder.isEqualTo(userId))
+        );
     }
-@Transactional
+
+    @Transactional
     @Override
-    public void updateEmail(String userId,String email) {
-    userMapper.update(c -> c
-            .set(ucUser.email).equalTo(email)
-            .where(ucUser.id, SqlBuilder.isEqualTo(userId))
-    );
+    public void updateEmail(String userId, String email) {
+        userMapper.update(c -> c
+                .set(ucUser.email).equalTo(email)
+                .where(ucUser.id, SqlBuilder.isEqualTo(userId))
+        );
     }
 }
