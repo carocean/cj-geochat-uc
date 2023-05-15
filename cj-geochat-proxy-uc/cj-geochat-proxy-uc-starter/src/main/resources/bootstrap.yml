@@ -16,12 +16,3 @@ spring:
     #所以不论服务提供者还是feign消费者，spring.application.name和eureka.instance.appname都配置就最好了
     #feign调用方大小写不区分，而注册中心永远显示为大写
     name: cj-geochat-proxy-uc
-app:
-  test:
-    feign:
-      adapter:
-        docker:
-          auth:
-            url: geochat-ecs.local:9000
-          uc:
-            url: localhost:40000

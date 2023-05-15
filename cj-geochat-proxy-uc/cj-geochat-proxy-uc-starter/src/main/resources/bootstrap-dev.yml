@@ -33,3 +33,13 @@ eureka:
     #注册中心点状态跳转到swagger
     status-page-url: http://${spring.cloud.client.ip-address}:${server.port}doc.html
     hostname: ${cj.geochat.hostname:localhost}
+#feign的地址配置，只在dev环境使用，为了避免在调试时docker环境其它服务向其寻址为localhost而连不上
+app:
+  test:
+    feign:
+      adapter:
+        docker:
+          auth:
+            url: geochat-ecs.local:9000
+          uc:
+            url: localhost:40000
