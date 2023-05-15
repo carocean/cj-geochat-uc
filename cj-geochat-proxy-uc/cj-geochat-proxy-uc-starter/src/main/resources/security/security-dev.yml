@@ -2,5 +2,4 @@ app:
   security:
     appKey: 01h0azh7d5ht7ge75hssxr6wc3
     appSecret: 01h0dehtwbpk2whgtp4r50e048
-    scopes: all
     redirect_uri: http://localhost:11000/api/v1/app/entrypoint
