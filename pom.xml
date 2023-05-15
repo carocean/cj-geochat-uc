@@ -15,7 +15,7 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>cj-geochat-proxy-uc</module>
+        <module>cj-geochat-open-uc</module>
         <module>cj-geochat-middle-uc</module>
         <module>cj-geochat-app-uc</module>
     </modules>
