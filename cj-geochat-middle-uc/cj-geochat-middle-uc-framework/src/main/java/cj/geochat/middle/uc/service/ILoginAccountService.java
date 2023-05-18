@@ -23,4 +23,7 @@ public interface ILoginAccountService {
 
     List<UcLoginAccount> listAccountOnUser(String userId, String category);
 
+    void removeAccountByOpenCode(String userid, String openCode, LoginAccountCategory loginAccountCategory);
+
+    UcLoginAccount findAccountBy(String userid, LoginAccountCategory category, String openCode);
 }

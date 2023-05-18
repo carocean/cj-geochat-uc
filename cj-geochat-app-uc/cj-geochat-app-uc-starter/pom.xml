@@ -19,11 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>cj.geochat</groupId>
-            <artifactId>cj-geochat-ability-banner</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cj.geochat</groupId>
-            <artifactId>cj-geochat-ability-web</artifactId>
+            <artifactId>cj-geochat-ability-oauth2-app</artifactId>
         </dependency>
         <dependency>
             <groupId>cj.geochat</groupId>
@@ -51,7 +47,6 @@
             <artifactId>cj-geochat-app-uc-remote</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

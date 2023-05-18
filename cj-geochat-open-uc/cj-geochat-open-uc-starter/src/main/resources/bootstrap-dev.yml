@@ -31,7 +31,7 @@ eureka:
     #eureka.instance.appname的配置名在注册中心会覆盖spring.application.name而显示，但feign认只spring.application.name
     appname: cj-geochat-open-uc
     #注册中心点状态跳转到swagger
-    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}doc.html
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}${server.servlet.context-path}doc.html
     hostname: ${cj.geochat.hostname:localhost}
 #feign的地址配置，只在dev环境使用，为了避免在调试时docker环境其它服务向其寻址为localhost而连不上
 app:

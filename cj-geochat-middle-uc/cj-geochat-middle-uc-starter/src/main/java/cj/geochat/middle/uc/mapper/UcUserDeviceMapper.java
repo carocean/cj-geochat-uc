@@ -33,7 +33,7 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    BasicColumn[] selectList = BasicColumn.columnList(id, userId, deviceId);
+    BasicColumn[] selectList = BasicColumn.columnList(id, userId, identifier, osName, deviceName, deviceVersion);
 
     /**
      * @mbg.generated generated automatically, do not modify!
@@ -42,7 +42,10 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
     @Results(id="UcUserDeviceResult", value = {
         @Result(column="id", property="id", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="user_id", property="userId", jdbcType=JdbcType.VARCHAR),
-        @Result(column="device_id", property="deviceId", jdbcType=JdbcType.VARCHAR)
+        @Result(column="identifier", property="identifier", jdbcType=JdbcType.VARCHAR),
+        @Result(column="os_name", property="osName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="device_name", property="deviceName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="device_version", property="deviceVersion", jdbcType=JdbcType.VARCHAR)
     })
     List<UcUserDevice> selectMany(SelectStatementProvider selectStatement);
 
@@ -83,7 +86,10 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
         return MyBatis3Utils.insert(this::insert, row, ucUserDevice, c ->
             c.map(id).toProperty("id")
             .map(userId).toProperty("userId")
-            .map(deviceId).toProperty("deviceId")
+            .map(identifier).toProperty("identifier")
+            .map(osName).toProperty("osName")
+            .map(deviceName).toProperty("deviceName")
+            .map(deviceVersion).toProperty("deviceVersion")
         );
     }
 
@@ -94,7 +100,10 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
         return MyBatis3Utils.insertMultiple(this::insertMultiple, records, ucUserDevice, c ->
             c.map(id).toProperty("id")
             .map(userId).toProperty("userId")
-            .map(deviceId).toProperty("deviceId")
+            .map(identifier).toProperty("identifier")
+            .map(osName).toProperty("osName")
+            .map(deviceName).toProperty("deviceName")
+            .map(deviceVersion).toProperty("deviceVersion")
         );
     }
 
@@ -105,7 +114,10 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
         return MyBatis3Utils.insert(this::insert, row, ucUserDevice, c ->
             c.map(id).toPropertyWhenPresent("id", row::getId)
             .map(userId).toPropertyWhenPresent("userId", row::getUserId)
-            .map(deviceId).toPropertyWhenPresent("deviceId", row::getDeviceId)
+            .map(identifier).toPropertyWhenPresent("identifier", row::getIdentifier)
+            .map(osName).toPropertyWhenPresent("osName", row::getOsName)
+            .map(deviceName).toPropertyWhenPresent("deviceName", row::getDeviceName)
+            .map(deviceVersion).toPropertyWhenPresent("deviceVersion", row::getDeviceVersion)
         );
     }
 
@@ -152,7 +164,10 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
     static UpdateDSL<UpdateModel> updateAllColumns(UcUserDevice row, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(id).equalTo(row::getId)
                 .set(userId).equalTo(row::getUserId)
-                .set(deviceId).equalTo(row::getDeviceId);
+                .set(identifier).equalTo(row::getIdentifier)
+                .set(osName).equalTo(row::getOsName)
+                .set(deviceName).equalTo(row::getDeviceName)
+                .set(deviceVersion).equalTo(row::getDeviceVersion);
     }
 
     /**
@@ -161,7 +176,10 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
     static UpdateDSL<UpdateModel> updateSelectiveColumns(UcUserDevice row, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(id).equalToWhenPresent(row::getId)
                 .set(userId).equalToWhenPresent(row::getUserId)
-                .set(deviceId).equalToWhenPresent(row::getDeviceId);
+                .set(identifier).equalToWhenPresent(row::getIdentifier)
+                .set(osName).equalToWhenPresent(row::getOsName)
+                .set(deviceName).equalToWhenPresent(row::getDeviceName)
+                .set(deviceVersion).equalToWhenPresent(row::getDeviceVersion);
     }
 
     /**
@@ -170,7 +188,10 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
     default int updateByPrimaryKey(UcUserDevice row) {
         return update(c ->
             c.set(userId).equalTo(row::getUserId)
-            .set(deviceId).equalTo(row::getDeviceId)
+            .set(identifier).equalTo(row::getIdentifier)
+            .set(osName).equalTo(row::getOsName)
+            .set(deviceName).equalTo(row::getDeviceName)
+            .set(deviceVersion).equalTo(row::getDeviceVersion)
             .where(id, isEqualTo(row::getId))
         );
     }
@@ -181,7 +202,10 @@ public interface UcUserDeviceMapper extends CommonCountMapper, CommonDeleteMappe
     default int updateByPrimaryKeySelective(UcUserDevice row) {
         return update(c ->
             c.set(userId).equalToWhenPresent(row::getUserId)
-            .set(deviceId).equalToWhenPresent(row::getDeviceId)
+            .set(identifier).equalToWhenPresent(row::getIdentifier)
+            .set(osName).equalToWhenPresent(row::getOsName)
+            .set(deviceName).equalToWhenPresent(row::getDeviceName)
+            .set(deviceVersion).equalToWhenPresent(row::getDeviceVersion)
             .where(id, isEqualTo(row::getId))
         );
     }

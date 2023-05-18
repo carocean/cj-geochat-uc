@@ -19,4 +19,8 @@ public interface ILoginAccountRestfull {
     void removeAccountsByUser(String userId);
 
     UcLoginAccount findAccount(String category, String openCode);
+
+    void removeAccountByOpenCode(String userid, String openCode, LoginAccountCategory loginAccountCategory);
+
+    UcLoginAccount findAccountBy(String userid, LoginAccountCategory category, String openCode);
 }

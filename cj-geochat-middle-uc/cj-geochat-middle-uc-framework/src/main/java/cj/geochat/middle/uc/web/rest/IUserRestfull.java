@@ -1,5 +1,6 @@
 package cj.geochat.middle.uc.web.rest;
 
+import cj.geochat.middle.uc.GenderType;
 import cj.geochat.middle.uc.UserStatus;
 import cj.geochat.middle.uc.model.UcUser;
 
@@ -29,4 +30,10 @@ public interface IUserRestfull {
     void updateIntro(String userId, String intro);
 
     void updateMajorAccount(String userId, String accountId);
+
+    void updateRealName(String userid, String realName);
+
+    void updateGender(String userid, GenderType gender);
+
+    void updateCountry(String userid, String countryCode, String countryName);
 }

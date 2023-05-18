@@ -16,6 +16,20 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>cj.geochat</groupId>
+            <artifactId>cj-geochat-ability-banner</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cj.geochat</groupId>
+            <artifactId>cj-geochat-ability-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cj.geochat</groupId>
+            <artifactId>cj-geochat-middle-uc-framework</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

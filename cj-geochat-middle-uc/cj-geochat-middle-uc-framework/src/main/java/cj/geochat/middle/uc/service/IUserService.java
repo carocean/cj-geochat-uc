@@ -1,5 +1,6 @@
 package cj.geochat.middle.uc.service;
 
+import cj.geochat.middle.uc.GenderType;
 import cj.geochat.middle.uc.UserStatus;
 import cj.geochat.middle.uc.model.UcUser;
 
@@ -36,5 +37,9 @@ public interface IUserService {
     void updatePhone(String userId,String phone);
 
     void updateEmail(String userId,String email);
+    void updateRealName(String userid, String realName);
 
+    void updateGender(String userid, GenderType gender);
+
+    void updateCountry(String userid, String countryCode, String countryName);
 }

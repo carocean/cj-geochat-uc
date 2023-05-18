@@ -197,12 +197,6 @@
             </TableInfo>
             <TableInfo>
               <option name="database" value="geochat.uc" />
-              <option name="domainName" value="UcDevice" />
-              <option name="tableComment" value="设备表&#10;用户登录所在的设备信息" />
-              <option name="tableName" value="uc_device" />
-            </TableInfo>
-            <TableInfo>
-              <option name="database" value="geochat.uc" />
               <option name="domainName" value="UcLoginAccount" />
               <option name="tableComment" value="登录账号表。此表为支持多种登录方式，如手机号、邮件、微信、支付宝等。&#10;不包括密码信息，因为用户不论多少登录方式，身份只有一个。" />
               <option name="tableName" value="uc_login_account" />

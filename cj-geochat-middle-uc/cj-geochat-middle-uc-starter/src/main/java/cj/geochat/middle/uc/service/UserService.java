@@ -2,6 +2,7 @@ package cj.geochat.middle.uc.service;
 
 import cj.geochat.ability.mybatis.config.DataSourceConfig;
 import cj.geochat.ability.util.DateUtils;
+import cj.geochat.middle.uc.GenderType;
 import cj.geochat.middle.uc.UserStatus;
 import cj.geochat.middle.uc.mapper.UcUserDynamicSqlSupport;
 import cj.geochat.middle.uc.mapper.UcUserMapper;
@@ -20,6 +21,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
+import static cj.geochat.middle.uc.mapper.UcUserDynamicSqlSupport.realName;
 import static cj.geochat.middle.uc.mapper.UcUserDynamicSqlSupport.ucUser;
 
 @Service
@@ -188,6 +190,34 @@ public class UserService implements IUserService {
         userMapper.update(c -> c
                 .set(ucUser.email).equalTo(email)
                 .where(ucUser.id, SqlBuilder.isEqualTo(userId))
+        );
+    }
+
+    @Transactional
+    @Override
+    public void updateRealName(String userid, String realName) {
+        userMapper.update(c -> c
+                .set(ucUser.realName).equalTo(realName)
+                .where(ucUser.id, SqlBuilder.isEqualTo(userid))
+        );
+    }
+
+    @Transactional
+    @Override
+    public void updateGender(String userid, GenderType gender) {
+        userMapper.update(c -> c
+                .set(ucUser.realName).equalTo(realName.name())
+                .where(ucUser.id, SqlBuilder.isEqualTo(userid))
+        );
+    }
+
+    @Transactional
+    @Override
+    public void updateCountry(String userid, String countryCode, String countryName) {
+        userMapper.update(c -> c
+                .set(ucUser.countryCode).equalTo(countryCode)
+                .set(ucUser.countrName).equalTo(countryName)
+                .where(ucUser.id, SqlBuilder.isEqualTo(userid))
         );
     }
 }

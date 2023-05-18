@@ -82,5 +82,20 @@ public class LoginAccountRestfull implements ILoginAccountRestfull {
     public UcLoginAccount findAccount(String category, String openCode) {
         return loginAccountService.findAccount(category, openCode);
     }
-
+    @GetMapping("/removeAccountByOpenCode")
+    @ApiResult
+    @ApiOperation("移除openCode账号")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public void removeAccountByOpenCode(String userid, String openCode, LoginAccountCategory loginAccountCategory) {
+        loginAccountService.removeAccountByOpenCode(userid, openCode, loginAccountCategory);
+    }
+    @GetMapping("/findAccountBy")
+    @ApiResult
+    @ApiOperation("按条件查找账号")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public UcLoginAccount findAccountBy(String userid, LoginAccountCategory category, String openCode) {
+        return loginAccountService.findAccountBy(userid,category,openCode);
+    }
 }

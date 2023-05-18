@@ -1,6 +1,7 @@
 package cj.geochat.middle.uc.web.rest;
 
 import cj.geochat.ability.api.annotation.ApiResult;
+import cj.geochat.middle.uc.GenderType;
 import cj.geochat.middle.uc.UserStatus;
 import cj.geochat.middle.uc.model.UcUser;
 import cj.geochat.middle.uc.surface.IRegisterUserSurface;
@@ -33,8 +34,8 @@ public class UserRestfull implements IUserRestfull {
     @ApiOperation("新建用户")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
-    public String createUser(String avatar, String nickName,  String password,@RequestParam(required = false) String countryCode,@RequestParam(required = false) String countryName,  boolean isAgreeUPA) throws UnsupportedEncodingException {
-        return userService.createUser(avatar, nickName, password, countryCode,countryName, isAgreeUPA);
+    public String createUser(String avatar, String nickName, String password, @RequestParam(required = false) String countryCode, @RequestParam(required = false) String countryName, boolean isAgreeUPA) throws UnsupportedEncodingException {
+        return userService.createUser(avatar, nickName, password, countryCode, countryName, isAgreeUPA);
     }
 
     @GetMapping("/removeUser")
@@ -134,5 +135,32 @@ public class UserRestfull implements IUserRestfull {
     @Override
     public void updateMajorAccount(String userId, @ApiParam(value = "主登录账号") String accountId) {
         userService.updateMajorAccount(userId, accountId);
+    }
+
+    @GetMapping("/updateRealName")
+    @ApiResult
+    @ApiOperation("更新真名")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public void updateRealName(String userid, String realName) {
+        userService.updateRealName(userid, realName);
+    }
+
+    @GetMapping("/updateGender")
+    @ApiResult
+    @ApiOperation("更新性别")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public void updateGender(String userid, GenderType gender) {
+        userService.updateGender(userid, gender);
+    }
+
+    @GetMapping("/updateCountry")
+    @ApiResult
+    @ApiOperation("更新国家")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public void updateCountry(String userid, String countryCode, @RequestParam(required = false) String countryName) {
+        userService.updateCountry(userid, countryCode, countryName);
     }
 }

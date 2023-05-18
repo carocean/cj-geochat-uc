@@ -83,4 +83,24 @@ public class LoginAccountService implements ILoginAccountService {
         return list.isEmpty() ? null : list.get(0);
     }
 
+    @Transactional
+    @Override
+    public void removeAccountByOpenCode(String userid, String openCode, LoginAccountCategory loginAccountCategory) {
+        loginAccountMapper.delete(c -> c
+                .where(UcLoginAccountDynamicSqlSupport.ucLoginAccount.userId, SqlBuilder.isEqualTo(userid))
+                .and(UcLoginAccountDynamicSqlSupport.openCode, SqlBuilder.isEqualTo(openCode))
+                .and(UcLoginAccountDynamicSqlSupport.category, SqlBuilder.isEqualTo(loginAccountCategory.name()))
+        );
+    }
+
+    @DataSourceConfig.ReadOnly
+    @Override
+    public UcLoginAccount findAccountBy(String userid, LoginAccountCategory category, String openCode) {
+        return loginAccountMapper.select(c -> c
+                .where(UcLoginAccountDynamicSqlSupport.category, SqlBuilder.isEqualTo(category.name()))
+                .and(UcLoginAccountDynamicSqlSupport.userId, SqlBuilder.isEqualTo(userid))
+                .and(UcLoginAccountDynamicSqlSupport.openCode, SqlBuilder.isEqualTo(openCode))
+                .limit(1)
+        ).stream().findFirst().orElse(null);
+    }
 }

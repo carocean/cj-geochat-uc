@@ -44,7 +44,7 @@ public class Application {
 
     /**
      * Column: app_secret
-     * Type: VARCHAR(50)
+     * Type: VARCHAR(100)
      * Remark: 秘钥
      */
     private String appSecret;
