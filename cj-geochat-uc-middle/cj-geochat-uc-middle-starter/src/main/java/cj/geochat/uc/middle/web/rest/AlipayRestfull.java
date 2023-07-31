@@ -26,7 +26,7 @@ public class AlipayRestfull implements IAlipayRestfull {
     @Operation(summary = "新建支持宝")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
-    public String createAlipay(String userId, String openId, @RequestParam(required = false) @Parameter(name = "昵称") String nickName, @RequestParam(required = false) String avatar, @RequestParam(required = false) String gender, @RequestParam(required = false) String city, @RequestParam(required = false) String province) {
+    public String createAlipay(String userId, String openId, @RequestParam(required = false) @Parameter(description = "昵称") String nickName, @RequestParam(required = false) String avatar, @RequestParam(required = false) String gender, @RequestParam(required = false) String city, @RequestParam(required = false) String province) {
         return alipayService.createAlipay(userId, openId, nickName, avatar, gender, city, province);
     }
 

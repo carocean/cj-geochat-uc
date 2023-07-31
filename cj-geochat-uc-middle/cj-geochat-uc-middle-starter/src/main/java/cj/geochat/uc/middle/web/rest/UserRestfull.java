@@ -133,7 +133,7 @@ public class UserRestfull implements IUserRestfull {
     @Operation(summary = "更新用户主账号")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
-    public void updateMajorAccount(String userId, @Parameter(name = "主登录账号") String accountId) {
+    public void updateMajorAccount(String userId, @Parameter(description = "主登录账号") String accountId) {
         userService.updateMajorAccount(userId, accountId);
     }
 
