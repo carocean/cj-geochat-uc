@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,8 +26,8 @@ public class ApplicationRestfull implements IApplicationRestfull {
     @Operation(summary = "新建应用")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
-    public String createApp(String appName, String appTypeId, String appCategoryId, @RequestParam(required = false) String additionalInformation) {
-        return applicationService.createApp(appName, appTypeId, appCategoryId, additionalInformation);
+    public String createApp(String appName, String appTypeId, String appCategoryId) {
+        return applicationService.createApp(appName, appTypeId, appCategoryId);
     }
 
     @GetMapping("/removeApp")
@@ -94,6 +93,15 @@ public class ApplicationRestfull implements IApplicationRestfull {
         applicationService.resetAppSecret(appId);
     }
 
+    @GetMapping("/updateAuthCodeValidity")
+    @ApiResult
+    @Operation(summary = "更新授权码有效时间")
+    @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
+    @Override
+    public void updateAuthCodeValidity(String appId, long intervalSeconds) {
+        applicationService.updateAuthCodeValidity(appId, intervalSeconds);
+    }
+
     @GetMapping("/updateAccessTokenValidity")
     @ApiResult
     @Operation(summary = "更新访问令牌有效时间")
@@ -120,16 +128,14 @@ public class ApplicationRestfull implements IApplicationRestfull {
     public void updateAutoapprove(String appId, boolean autoapprove) {
         applicationService.updateAutoapprove(appId, autoapprove);
     }
-
-    @GetMapping("/updateAdditionalInformation")
+    @GetMapping("/updateReuseRefreshTokens")
     @ApiResult
-    @Operation(summary = "更新扩展信息，必须是json")
+    @Operation(summary = "更新是否在领牌未地期时如刷新领牌生成新的令牌，否则在请求刷新时仍返回旧令牌")
     @ApiResponses({@ApiResponse(responseCode = "2000", description = "ok")})
     @Override
-    public void updateAdditionalInformation(String appId, String additionalInformation) {
-        applicationService.updateAdditionalInformation(appId, additionalInformation);
+    public void updateReuseRefreshTokens(String appId, boolean reuseRefreshTokens) {
+        applicationService.updateReuseRefreshTokens(appId, reuseRefreshTokens);
     }
-
     @GetMapping("/addGrantTypeToApp")
     @ApiResult
     @Operation(summary = "添加授权类型到应用")

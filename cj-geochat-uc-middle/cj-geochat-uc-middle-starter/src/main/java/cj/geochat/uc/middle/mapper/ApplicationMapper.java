@@ -33,7 +33,7 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
     /**
      * @mbg.generated generated automatically, do not modify!
      */
-    BasicColumn[] selectList = BasicColumn.columnList(id, appKey, appName, typeId, cateId, appSecret, accessTokenValidity, refreshTokenValidity, autoapprove, ctime, additionalInformation);
+    BasicColumn[] selectList = BasicColumn.columnList(id, appKey, appKeyIssuedAt, appSecret, appSecretIssuedAt, appName, typeId, cateId, autoapprove, refreshTokenValidity, authCodeValidity, accessTokenValidity, reuseRefreshTokens);
 
     /**
      * @mbg.generated generated automatically, do not modify!
@@ -42,15 +42,17 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
     @Results(id="ApplicationResult", value = {
         @Result(column="id", property="id", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="app_key", property="appKey", jdbcType=JdbcType.VARCHAR),
+        @Result(column="app_key_issued_at", property="appKeyIssuedAt", jdbcType=JdbcType.VARCHAR),
+        @Result(column="app_secret", property="appSecret", jdbcType=JdbcType.VARCHAR),
+        @Result(column="app_secret_issued_at", property="appSecretIssuedAt", jdbcType=JdbcType.VARCHAR),
         @Result(column="app_name", property="appName", jdbcType=JdbcType.VARCHAR),
         @Result(column="type_id", property="typeId", jdbcType=JdbcType.VARCHAR),
         @Result(column="cate_id", property="cateId", jdbcType=JdbcType.VARCHAR),
-        @Result(column="app_secret", property="appSecret", jdbcType=JdbcType.VARCHAR),
-        @Result(column="access_token_validity", property="accessTokenValidity", jdbcType=JdbcType.BIGINT),
-        @Result(column="refresh_token_validity", property="refreshTokenValidity", jdbcType=JdbcType.BIGINT),
         @Result(column="autoapprove", property="autoapprove", jdbcType=JdbcType.BIT),
-        @Result(column="ctime", property="ctime", jdbcType=JdbcType.VARCHAR),
-        @Result(column="additional_information", property="additionalInformation", jdbcType=JdbcType.VARCHAR)
+        @Result(column="refresh_token_validity", property="refreshTokenValidity", jdbcType=JdbcType.BIGINT),
+        @Result(column="auth_code_validity", property="authCodeValidity", jdbcType=JdbcType.BIGINT),
+        @Result(column="access_token_validity", property="accessTokenValidity", jdbcType=JdbcType.BIGINT),
+        @Result(column="reuse_refresh_tokens", property="reuseRefreshTokens", jdbcType=JdbcType.BIT)
     })
     List<Application> selectMany(SelectStatementProvider selectStatement);
 
@@ -91,15 +93,17 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
         return MyBatis3Utils.insert(this::insert, row, application, c ->
             c.map(id).toProperty("id")
             .map(appKey).toProperty("appKey")
+            .map(appKeyIssuedAt).toProperty("appKeyIssuedAt")
+            .map(appSecret).toProperty("appSecret")
+            .map(appSecretIssuedAt).toProperty("appSecretIssuedAt")
             .map(appName).toProperty("appName")
             .map(typeId).toProperty("typeId")
             .map(cateId).toProperty("cateId")
-            .map(appSecret).toProperty("appSecret")
-            .map(accessTokenValidity).toProperty("accessTokenValidity")
-            .map(refreshTokenValidity).toProperty("refreshTokenValidity")
             .map(autoapprove).toProperty("autoapprove")
-            .map(ctime).toProperty("ctime")
-            .map(additionalInformation).toProperty("additionalInformation")
+            .map(refreshTokenValidity).toProperty("refreshTokenValidity")
+            .map(authCodeValidity).toProperty("authCodeValidity")
+            .map(accessTokenValidity).toProperty("accessTokenValidity")
+            .map(reuseRefreshTokens).toProperty("reuseRefreshTokens")
         );
     }
 
@@ -110,15 +114,17 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
         return MyBatis3Utils.insertMultiple(this::insertMultiple, records, application, c ->
             c.map(id).toProperty("id")
             .map(appKey).toProperty("appKey")
+            .map(appKeyIssuedAt).toProperty("appKeyIssuedAt")
+            .map(appSecret).toProperty("appSecret")
+            .map(appSecretIssuedAt).toProperty("appSecretIssuedAt")
             .map(appName).toProperty("appName")
             .map(typeId).toProperty("typeId")
             .map(cateId).toProperty("cateId")
-            .map(appSecret).toProperty("appSecret")
-            .map(accessTokenValidity).toProperty("accessTokenValidity")
-            .map(refreshTokenValidity).toProperty("refreshTokenValidity")
             .map(autoapprove).toProperty("autoapprove")
-            .map(ctime).toProperty("ctime")
-            .map(additionalInformation).toProperty("additionalInformation")
+            .map(refreshTokenValidity).toProperty("refreshTokenValidity")
+            .map(authCodeValidity).toProperty("authCodeValidity")
+            .map(accessTokenValidity).toProperty("accessTokenValidity")
+            .map(reuseRefreshTokens).toProperty("reuseRefreshTokens")
         );
     }
 
@@ -129,15 +135,17 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
         return MyBatis3Utils.insert(this::insert, row, application, c ->
             c.map(id).toPropertyWhenPresent("id", row::getId)
             .map(appKey).toPropertyWhenPresent("appKey", row::getAppKey)
+            .map(appKeyIssuedAt).toPropertyWhenPresent("appKeyIssuedAt", row::getAppKeyIssuedAt)
+            .map(appSecret).toPropertyWhenPresent("appSecret", row::getAppSecret)
+            .map(appSecretIssuedAt).toPropertyWhenPresent("appSecretIssuedAt", row::getAppSecretIssuedAt)
             .map(appName).toPropertyWhenPresent("appName", row::getAppName)
             .map(typeId).toPropertyWhenPresent("typeId", row::getTypeId)
             .map(cateId).toPropertyWhenPresent("cateId", row::getCateId)
-            .map(appSecret).toPropertyWhenPresent("appSecret", row::getAppSecret)
-            .map(accessTokenValidity).toPropertyWhenPresent("accessTokenValidity", row::getAccessTokenValidity)
-            .map(refreshTokenValidity).toPropertyWhenPresent("refreshTokenValidity", row::getRefreshTokenValidity)
             .map(autoapprove).toPropertyWhenPresent("autoapprove", row::getAutoapprove)
-            .map(ctime).toPropertyWhenPresent("ctime", row::getCtime)
-            .map(additionalInformation).toPropertyWhenPresent("additionalInformation", row::getAdditionalInformation)
+            .map(refreshTokenValidity).toPropertyWhenPresent("refreshTokenValidity", row::getRefreshTokenValidity)
+            .map(authCodeValidity).toPropertyWhenPresent("authCodeValidity", row::getAuthCodeValidity)
+            .map(accessTokenValidity).toPropertyWhenPresent("accessTokenValidity", row::getAccessTokenValidity)
+            .map(reuseRefreshTokens).toPropertyWhenPresent("reuseRefreshTokens", row::getReuseRefreshTokens)
         );
     }
 
@@ -184,15 +192,17 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
     static UpdateDSL<UpdateModel> updateAllColumns(Application row, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(id).equalTo(row::getId)
                 .set(appKey).equalTo(row::getAppKey)
+                .set(appKeyIssuedAt).equalTo(row::getAppKeyIssuedAt)
+                .set(appSecret).equalTo(row::getAppSecret)
+                .set(appSecretIssuedAt).equalTo(row::getAppSecretIssuedAt)
                 .set(appName).equalTo(row::getAppName)
                 .set(typeId).equalTo(row::getTypeId)
                 .set(cateId).equalTo(row::getCateId)
-                .set(appSecret).equalTo(row::getAppSecret)
-                .set(accessTokenValidity).equalTo(row::getAccessTokenValidity)
-                .set(refreshTokenValidity).equalTo(row::getRefreshTokenValidity)
                 .set(autoapprove).equalTo(row::getAutoapprove)
-                .set(ctime).equalTo(row::getCtime)
-                .set(additionalInformation).equalTo(row::getAdditionalInformation);
+                .set(refreshTokenValidity).equalTo(row::getRefreshTokenValidity)
+                .set(authCodeValidity).equalTo(row::getAuthCodeValidity)
+                .set(accessTokenValidity).equalTo(row::getAccessTokenValidity)
+                .set(reuseRefreshTokens).equalTo(row::getReuseRefreshTokens);
     }
 
     /**
@@ -201,15 +211,17 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
     static UpdateDSL<UpdateModel> updateSelectiveColumns(Application row, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(id).equalToWhenPresent(row::getId)
                 .set(appKey).equalToWhenPresent(row::getAppKey)
+                .set(appKeyIssuedAt).equalToWhenPresent(row::getAppKeyIssuedAt)
+                .set(appSecret).equalToWhenPresent(row::getAppSecret)
+                .set(appSecretIssuedAt).equalToWhenPresent(row::getAppSecretIssuedAt)
                 .set(appName).equalToWhenPresent(row::getAppName)
                 .set(typeId).equalToWhenPresent(row::getTypeId)
                 .set(cateId).equalToWhenPresent(row::getCateId)
-                .set(appSecret).equalToWhenPresent(row::getAppSecret)
-                .set(accessTokenValidity).equalToWhenPresent(row::getAccessTokenValidity)
-                .set(refreshTokenValidity).equalToWhenPresent(row::getRefreshTokenValidity)
                 .set(autoapprove).equalToWhenPresent(row::getAutoapprove)
-                .set(ctime).equalToWhenPresent(row::getCtime)
-                .set(additionalInformation).equalToWhenPresent(row::getAdditionalInformation);
+                .set(refreshTokenValidity).equalToWhenPresent(row::getRefreshTokenValidity)
+                .set(authCodeValidity).equalToWhenPresent(row::getAuthCodeValidity)
+                .set(accessTokenValidity).equalToWhenPresent(row::getAccessTokenValidity)
+                .set(reuseRefreshTokens).equalToWhenPresent(row::getReuseRefreshTokens);
     }
 
     /**
@@ -218,15 +230,17 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
     default int updateByPrimaryKey(Application row) {
         return update(c ->
             c.set(appKey).equalTo(row::getAppKey)
+            .set(appKeyIssuedAt).equalTo(row::getAppKeyIssuedAt)
+            .set(appSecret).equalTo(row::getAppSecret)
+            .set(appSecretIssuedAt).equalTo(row::getAppSecretIssuedAt)
             .set(appName).equalTo(row::getAppName)
             .set(typeId).equalTo(row::getTypeId)
             .set(cateId).equalTo(row::getCateId)
-            .set(appSecret).equalTo(row::getAppSecret)
-            .set(accessTokenValidity).equalTo(row::getAccessTokenValidity)
-            .set(refreshTokenValidity).equalTo(row::getRefreshTokenValidity)
             .set(autoapprove).equalTo(row::getAutoapprove)
-            .set(ctime).equalTo(row::getCtime)
-            .set(additionalInformation).equalTo(row::getAdditionalInformation)
+            .set(refreshTokenValidity).equalTo(row::getRefreshTokenValidity)
+            .set(authCodeValidity).equalTo(row::getAuthCodeValidity)
+            .set(accessTokenValidity).equalTo(row::getAccessTokenValidity)
+            .set(reuseRefreshTokens).equalTo(row::getReuseRefreshTokens)
             .where(id, isEqualTo(row::getId))
         );
     }
@@ -237,15 +251,17 @@ public interface ApplicationMapper extends CommonCountMapper, CommonDeleteMapper
     default int updateByPrimaryKeySelective(Application row) {
         return update(c ->
             c.set(appKey).equalToWhenPresent(row::getAppKey)
+            .set(appKeyIssuedAt).equalToWhenPresent(row::getAppKeyIssuedAt)
+            .set(appSecret).equalToWhenPresent(row::getAppSecret)
+            .set(appSecretIssuedAt).equalToWhenPresent(row::getAppSecretIssuedAt)
             .set(appName).equalToWhenPresent(row::getAppName)
             .set(typeId).equalToWhenPresent(row::getTypeId)
             .set(cateId).equalToWhenPresent(row::getCateId)
-            .set(appSecret).equalToWhenPresent(row::getAppSecret)
-            .set(accessTokenValidity).equalToWhenPresent(row::getAccessTokenValidity)
-            .set(refreshTokenValidity).equalToWhenPresent(row::getRefreshTokenValidity)
             .set(autoapprove).equalToWhenPresent(row::getAutoapprove)
-            .set(ctime).equalToWhenPresent(row::getCtime)
-            .set(additionalInformation).equalToWhenPresent(row::getAdditionalInformation)
+            .set(refreshTokenValidity).equalToWhenPresent(row::getRefreshTokenValidity)
+            .set(authCodeValidity).equalToWhenPresent(row::getAuthCodeValidity)
+            .set(accessTokenValidity).equalToWhenPresent(row::getAccessTokenValidity)
+            .set(reuseRefreshTokens).equalToWhenPresent(row::getReuseRefreshTokens)
             .where(id, isEqualTo(row::getId))
         );
     }

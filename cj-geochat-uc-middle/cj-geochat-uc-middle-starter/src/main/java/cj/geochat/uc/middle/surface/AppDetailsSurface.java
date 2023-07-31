@@ -35,11 +35,15 @@ public class AppDetailsSurface implements IAppDetailsSurface {
         var grantTypes = applicationService.listGrantType(appId);
         var redirectUris = applicationService.listRedirectUri(appId);
         var details = new AppDetails();
+        details.setId(appId);
         details.setAppKey(application.getAppKey());
+        details.setAppKeyIssuedAt(application.getAppKeyIssuedAt());
         details.setAppSecret(application.getAppSecret());
+        details.setAppSecretIssuedAt(application.getAppSecretIssuedAt());
+        details.setAppName(application.getAppName());
         details.setAutoapprove(application.getAutoapprove());
-        details.setCreateTime(application.getCtime());
-        details.setAdditionalInformation(application.getAdditionalInformation());
+        details.setReuseRefreshTokens(application.getReuseRefreshTokens());
+        details.setAuthCodeValidity(application.getAuthCodeValidity() == null ? 0 : application.getAuthCodeValidity());
         details.setAccessTokenValidity(application.getAccessTokenValidity() == null ? 0 : application.getAccessTokenValidity());
         details.setRefreshTokenValidity(application.getRefreshTokenValidity() == null ? 0 : application.getRefreshTokenValidity());
         details.setGrantTypes(grantTypes);

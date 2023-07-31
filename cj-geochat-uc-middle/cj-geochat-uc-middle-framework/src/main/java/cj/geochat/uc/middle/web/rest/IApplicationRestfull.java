@@ -5,7 +5,7 @@ import cj.geochat.uc.middle.model.Application;
 import java.util.List;
 
 public interface IApplicationRestfull {
-    String createApp(String appName, String appTypeId, String appCategoryId, String additionalInformation);
+    String createApp(String appName, String appTypeId, String appCategoryId);
 
     void removeApp(String appId);
 
@@ -21,15 +21,16 @@ public interface IApplicationRestfull {
 
     void resetAppSecret(String appId);
 
+    void updateAuthCodeValidity(String appId, long intervalSeconds);
+
     void updateAccessTokenValidity(String appId, long intervalSeconds);
 
     void updateRefreshTokenValidity(String appId, long intervalSeconds);
 
     void updateAutoapprove(String appId, boolean autoapprove);
 
-    void updateAdditionalInformation(String appId, String additionalInformation);
 
-
+    void updateReuseRefreshTokens(String appId, boolean reuseRefreshTokens);
 
     void addGrantTypeToApp(String grantType, String appId);
 

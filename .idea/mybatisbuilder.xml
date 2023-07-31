@@ -152,7 +152,7 @@
             <TableInfo>
               <option name="database" value="geochat.uc" />
               <option name="domainName" value="PaAppGrantType" />
-              <option name="tableComment" value="指派授权类型&#10;从认证中心得到支持的授权类型进行分配，有：authorization_code,password,refresh_token,implicit,client_credentials等" />
+              <option name="tableComment" value="指派授权类型&#10;从认证中心得到支持的授权类型进行分配，有：authorization_code,refresh_token" />
               <option name="tableName" value="pa_app_grant_type" />
             </TableInfo>
             <TableInfo>
@@ -321,7 +321,7 @@
             <TableInfo>
               <option name="database" value="geochat.uc" />
               <option name="domainName" value="PaAppGrantType" />
-              <option name="tableComment" value="指派授权类型&#10;从认证中心得到支持的授权类型进行分配，有：authorization_code,password,refresh_token,implicit,client_credentials等" />
+              <option name="tableComment" value="指派授权类型&#10;从认证中心得到支持的授权类型进行分配，有：authorization_code,refresh_token" />
               <option name="tableName" value="pa_app_grant_type" />
             </TableInfo>
           </value>

@@ -29,7 +29,7 @@ public class ApplicationService implements IApplicationService {
 
     @Transactional
     @Override
-    public String createApp(String appName, String appTypeId, String appCategoryId, String additionalInformation) {
+    public String createApp(String appName, String appTypeId, String appCategoryId) {
         Application application = new Application();
         application.setId(UlidCreator.getUlid().toLowerCase());
         application.setAppKey(UlidCreator.getUlid().toLowerCase());
@@ -37,9 +37,10 @@ public class ApplicationService implements IApplicationService {
         application.setAppName(appName);
         application.setTypeId(appTypeId);
         application.setCateId(appCategoryId);
-        application.setAdditionalInformation(additionalInformation);
-        application.setCtime(DateUtils.dateToLen17(new Date(System.currentTimeMillis())));
+        application.setAppKeyIssuedAt(DateUtils.dateToLen17(new Date(System.currentTimeMillis())));
+        application.setAppSecretIssuedAt(DateUtils.dateToLen17(new Date(System.currentTimeMillis())));
         application.setAutoapprove(true);
+        application.setReuseRefreshTokens(true);
         applicationMapper.insertSelective(application);
         return application.getId();
     }
@@ -69,7 +70,7 @@ public class ApplicationService implements IApplicationService {
     @Override
     public List<Application> listApp(long limit, long offset) {
         return applicationMapper.select(c -> c
-                .orderBy(ApplicationDynamicSqlSupport.ctime)
+                .orderBy(ApplicationDynamicSqlSupport.appKeyIssuedAt)
                 .limit(limit)
                 .offset(offset)
         );
@@ -80,7 +81,7 @@ public class ApplicationService implements IApplicationService {
     public List<Application> listAppByType(String appTypeId, long limit, long offset) {
         return applicationMapper.select(c -> c
                 .where(ApplicationDynamicSqlSupport.typeId, SqlBuilder.isEqualTo(appTypeId))
-                .orderBy(ApplicationDynamicSqlSupport.ctime)
+                .orderBy(ApplicationDynamicSqlSupport.appKeyIssuedAt)
                 .limit(limit)
                 .offset(offset)
         );
@@ -91,7 +92,7 @@ public class ApplicationService implements IApplicationService {
     public List<Application> listAppByCategory(String appCategoryId, long limit, long offset) {
         return applicationMapper.select(c -> c
                 .where(ApplicationDynamicSqlSupport.cateId, SqlBuilder.isEqualTo(appCategoryId))
-                .orderBy(ApplicationDynamicSqlSupport.ctime)
+                .orderBy(ApplicationDynamicSqlSupport.appKeyIssuedAt)
                 .limit(limit)
                 .offset(offset)
         );
@@ -103,6 +104,14 @@ public class ApplicationService implements IApplicationService {
         String newAppSecret = UlidCreator.getUlid().toLowerCase();
         applicationMapper.update(c -> c
                 .set(ApplicationDynamicSqlSupport.appSecret).equalTo(newAppSecret)
+                .where(ApplicationDynamicSqlSupport.id, SqlBuilder.isEqualTo(appId))
+        );
+    }
+    @Transactional
+    @Override
+    public void updateAuthCodeValidity(String appId, long intervalSeconds) {
+        applicationMapper.update(c -> c
+                .set(ApplicationDynamicSqlSupport.authCodeValidity).equalTo(intervalSeconds)
                 .where(ApplicationDynamicSqlSupport.id, SqlBuilder.isEqualTo(appId))
         );
     }
@@ -136,15 +145,14 @@ public class ApplicationService implements IApplicationService {
 
     @Transactional
     @Override
-    public void updateAdditionalInformation(String appId, String additionalInformation) {
+    public void updateReuseRefreshTokens(String appId, boolean reuseRefreshTokens) {
         applicationMapper.update(c -> c
-                .set(ApplicationDynamicSqlSupport.additionalInformation).equalTo(additionalInformation)
+                .set(ApplicationDynamicSqlSupport.reuseRefreshTokens).equalTo(reuseRefreshTokens)
                 .where(ApplicationDynamicSqlSupport.id, SqlBuilder.isEqualTo(appId))
         );
     }
 
     @Transactional
-
     @Override
     public void addGrantTypeToApp(String grantType, String appId) {
         PaAppGrantType paAppGrantType = new PaAppGrantType();

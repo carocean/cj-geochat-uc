@@ -17,9 +17,30 @@ public class Application {
     /**
      * Column: app_key
      * Type: VARCHAR(50)
-     * Remark: 对应oauth2的client_id
+     * Remark: 对应oauth2的app_id
      */
     private String appKey;
+
+    /**
+     * Column: app_key_issued_at
+     * Type: VARCHAR(17)
+     * Remark: 应用key发放日期
+     */
+    private String appKeyIssuedAt;
+
+    /**
+     * Column: app_secret
+     * Type: VARCHAR(100)
+     * Remark: 秘钥
+     */
+    private String appSecret;
+
+    /**
+     * Column: app_secret_issued_at
+     * Type: VARCHAR(17)
+     * Remark: 应用密钥发放日期
+     */
+    private String appSecretIssuedAt;
 
     /**
      * Column: app_name
@@ -43,27 +64,6 @@ public class Application {
     private String cateId;
 
     /**
-     * Column: app_secret
-     * Type: VARCHAR(100)
-     * Remark: 秘钥
-     */
-    private String appSecret;
-
-    /**
-     * Column: access_token_validity
-     * Type: BIGINT
-     * Remark: 设定客户端的access_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 12, 12小时).
-     */
-    private Long accessTokenValidity;
-
-    /**
-     * Column: refresh_token_validity
-     * Type: BIGINT
-     * Remark: 设定客户端的refresh_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 24 * 30, 30天).
-     */
-    private Long refreshTokenValidity;
-
-    /**
      * Column: autoapprove
      * Type: BIT
      * Default value: 1
@@ -72,16 +72,34 @@ public class Application {
     private Boolean autoapprove;
 
     /**
-     * Column: ctime
-     * Type: VARCHAR(17)
-     * Remark: 创建时间
+     * Column: refresh_token_validity
+     * Type: BIGINT
+     * Default value: 2592000
+     * Remark: 设定客户端的refresh_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 24 * 30, 30天).
      */
-    private String ctime;
+    private Long refreshTokenValidity;
 
     /**
-     * Column: additional_information
-     * Type: VARCHAR(1000)
-     * Remark: 这是一个预留的字段,在Oauth的流程中没有实际的使用,可选,但若设置值,必须是JSON格式的数据
+     * Column: auth_code_validity
+     * Type: BIGINT
+     * Default value: 600
+     * Remark: 设定客户端的authorization_code的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(10*60, 10分钟).
      */
-    private String additionalInformation;
+    private Long authCodeValidity;
+
+    /**
+     * Column: access_token_validity
+     * Type: BIGINT
+     * Default value: 2592000
+     * Remark: 设定客户端的access_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 12, 12小时).
+     */
+    private Long accessTokenValidity;
+
+    /**
+     * Column: reuse_refresh_tokens
+     * Type: BIT
+     * Default value: 1
+     * Remark: 是否在领牌没过期时生成新令牌
+     */
+    private Boolean reuseRefreshTokens;
 }
