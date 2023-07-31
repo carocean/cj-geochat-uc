@@ -40,6 +40,7 @@
         <entry key="JAVA_CLIENT_PACKAGE">
           <value>
             <list>
+              <option value="cj.geochat.uc.middle.mapper" />
               <option value="cj.geochat.middle.uc.mapper" />
             </list>
           </value>
@@ -47,6 +48,7 @@
         <entry key="JAVA_MODEL_PACKAGE">
           <value>
             <list>
+              <option value="cj.geochat.uc.middle.model" />
               <option value="cj.geochat.middle.uc.model" />
             </list>
           </value>
@@ -80,14 +82,14 @@
         <option name="javaClientConfig">
           <JavaClientGeneratorConfiguration>
             <option name="configurationType" value="XMLMAPPER" />
-            <option name="targetPackage" value="cj.geochat.middle.uc.mapper" />
-            <option name="targetProject" value="$PROJECT_DIR$/cj-geochat-middle-uc/cj-geochat-middle-uc-starter/src/main/java" />
+            <option name="targetPackage" value="cj.geochat.uc.middle.mapper" />
+            <option name="targetProject" value="$PROJECT_DIR$/cj-geochat-uc-middle/cj-geochat-uc-middle-starter/src/main/java" />
           </JavaClientGeneratorConfiguration>
         </option>
         <option name="javaModelConfig">
           <JavaModelGeneratorConfiguration>
-            <option name="targetPackage" value="cj.geochat.middle.uc.model" />
-            <option name="targetProject" value="$PROJECT_DIR$/cj-geochat-middle-uc/cj-geochat-middle-uc-framework/src/main/java" />
+            <option name="targetPackage" value="cj.geochat.uc.middle.model" />
+            <option name="targetProject" value="$PROJECT_DIR$/cj-geochat-uc-middle/cj-geochat-uc-middle-framework/src/main/java" />
           </JavaModelGeneratorConfiguration>
         </option>
         <option name="selectedPlugins">
